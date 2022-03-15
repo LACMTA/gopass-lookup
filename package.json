@@ -1,0 +1,26 @@
+{
+  "name": "go-pass-lookup",
+  "version": "1.0.0",
+  "description": "Lookup tool for schools participating in LA Metro's GoPass program.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf docs",
+    "build": "npx @11ty/eleventy",
+    "clean:build": "npm run clean && npm run build",
+    "serve": "npx @11ty/eleventy --serve",
+    "debug": "DEBUG=* npx @11ty/eleventy --serve",
+    "start": "npm run clean && npm run build && npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LACMTA/gopass-lookup.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LACMTA/gopass-lookup/issues"
+  },
+  "homepage": "https://github.com/LACMTA/gopass-lookup#readme"
+}
