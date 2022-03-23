@@ -1,4 +1,4 @@
-const GOOGLE_DOCS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7mrW37zB8Eh6mCMOGYnM13Kp_gBSA6y0ADJZ-ybPXYo7dYvNmwXvIKhGErG_U5iEw7TPciiZGCVoi/pub?gid=0&single=true&output=csv";
+const GOOGLE_DOCS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSWbwrsqF-c---4lfw0LZWymd-f8sy8sLYkXgzh0OyeGATWwrvv7V1Mq5BcApn7F_-WYKP1KXy5shKw/pub?output=csv";
 
 var SCHOOL_DATA = {};
 
@@ -8,7 +8,8 @@ function loadData() {
 		complete: function(results) {
 			SCHOOL_DATA = results.data;
 
-			let school_names = SCHOOL_DATA.map(x => x[0]).splice(1);
+			// x[n] where n is the column number of the school name (starting at 0)
+			let school_names = SCHOOL_DATA.map(x => x[1]).splice(1);
 	
 			document.getElementById('search-field').addEventListener('keyup', function(e) {
 				input = document.getElementById('search-field').value;
