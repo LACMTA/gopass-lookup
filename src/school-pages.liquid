@@ -1,0 +1,30 @@
+---
+layout: default
+pagination:
+  data: schools
+  size: 1
+  alias: school
+title: "{{ school.name }}"
+permalink: "schools/{{ school.name | slug }}/"
+---
+
+<div class="usa-section">
+	<div class="grid-container"> <!--  margin-0 padding-0 -->
+		<div class="grid-row">
+			<div class="grid-col padding-x-4 padding-bottom-4">
+				<section id="intro">
+					<h1>Students ride for Free with GoPass</h1>
+					<p class="line-height-sans-4">K-12 students at schools across Los Angeles County can now ride Metro buses and trains for free with the Metro GoPass.</p>
+				</section>
+				<section id="results-section">
+				</section>
+			</div>
+		</div>
+  </div>
+</div>
+
+{{ school.name }}
+
+{{ school.phone }}
+
+{{ school.address }}

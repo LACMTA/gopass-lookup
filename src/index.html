@@ -3,10 +3,21 @@ layout: default
 ---
 
 <div class="usa-section">
-	<div class="grid-container">
+	<div class="grid-container"> <!--  margin-0 padding-0 -->
 		<div class="grid-row">
-			<div class="grid-col-fill">
+			<div class="grid-col padding-x-4 padding-bottom-4">
+				<section id="intro">
+					<h1>Students ride for Free with GoPass</h1>
+					<p class="line-height-sans-4">K-12 students at schools across Los Angeles County can now ride Metro buses and trains for free with the Metro GoPass.</p>
+				</section>
+				<section id="results-section">
+				</section>
+			</div>
+		</div>
+		<div class="grid-row bg-base-lighter">
+			<div class="grid-col padding-x-4 padding-bottom-4">
 				<section id="search-section">
+					<h2>See if your school has GoPass</h2>
 					<form class="usa-search usa-search--big" role="search">
 						<label class="usa-sr-only" for="search-field"> Search </label>
 						<input class="usa-input" id="search-field" type="search" name="search" autocomplete="off" />
@@ -19,7 +30,80 @@ layout: default
 						</div>
 					</form>
 				</section>
-				<section id="results-section">
+			</div>
+		</div>
+		<div class="grid-row">
+			<div class="grid-col padding-x-4 padding-bottom-4">
+				<section id="contact">
+					<h2>Questions about GoPass?</h2>
+					<p class="line-height-sans-4">Our Customer Care team has answers.</p>
+					<p class="line-height-sans-4"><svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+						<use xlink:href="https://lacmta.github.io/design-system/dist/img/sprite.svg#phone"></use>
+					  </svg> (866) 827-8646</p>
+					<p class="line-height-sans-4"><svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+						<use xlink:href="https://lacmta.github.io/design-system/dist/img/sprite.svg#mail_outline"></use>
+					  </svg> <a href="mailto:gopass@taptogo.net">GoPass@taptogo.net</a></p>
+				</section>
+				<section id="faq">
+					<h2>Questions people ask:</h2>
+					<div class="usa-accordion usa-accordion--bordered">
+						<h4 class="usa-accordion__heading">
+						  <button
+							class="usa-accordion__button"
+							aria-expanded="true"
+							aria-controls="b-a1"
+						  >
+							What is GoPass?
+						  </button>
+						</h4>
+						<div id="b-a1" class="usa-accordion__content usa-prose">
+						  <p>
+							GoPass is a free pass for Metro bus and rail that is available to K-12 students at schools across Los Angeles County.
+						  </p>
+						</div>
+						<h4 class="usa-accordion__heading">
+						  <button
+							class="usa-accordion__button"
+							aria-expanded="false"
+							aria-controls="b-a2"
+						  >
+							How do I register for GoPass?
+						  </button>
+						</h4>
+						<div id="b-a2" class="usa-accordion__content usa-prose">
+						  <p>
+							Go to taptogo.net
+						  </p>
+						</div>
+						<h4 class="usa-accordion__heading">
+						  <button
+							class="usa-accordion__button"
+							aria-expanded="false"
+							aria-controls="b-a3"
+						  >
+							Who qualifies for GoPass
+						  </button>
+						</h4>
+						<div id="b-a3" class="usa-accordion__content usa-prose">
+						  <p>
+							Any student in grades K-12 attending a participating school within LA County.
+						  </p>
+						</div>
+						<h4 class="usa-accordion__heading">
+							<button
+							  class="usa-accordion__button"
+							  aria-expanded="false"
+							  aria-controls="b-a4"
+							>
+							  How do I replace a lost GoPass?
+							</button>
+						  </h4>
+						  <div id="b-a4" class="usa-accordion__content usa-prose">
+							<p>
+							  Contact TAP.
+							</p>
+						  </div>
+					  </div>
 				</section>
 			</div>
 		</div>
