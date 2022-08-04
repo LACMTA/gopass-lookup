@@ -1,11 +1,15 @@
 [
 	{
+		"id": 1,
 		"name": "School 1",
 		"phone": "123-456-7890",
-		"address": "123 Main St"
+		"address": "123 Main St",
+		"participating": true
 	},{
+		"id": 2,
 		"name": "School 2",
-		"phone": "123-456-7890",
-		"address": "123 Main St"
+		"phone": "987-654-3210",
+		"address": "456 Broadway Ave",
+		"participating": false
 	}
 ]

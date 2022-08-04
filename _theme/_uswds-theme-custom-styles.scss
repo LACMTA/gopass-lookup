@@ -19,3 +19,24 @@ i.e.
 @include u-padding-right('05');
 ----------------------------------------
 */
+
+.usa-header, .usa-nav {
+   background-color: #000;
+   color: #fff;
+}
+
+.usa-nav__primary button {
+   color: #fff;
+}
+
+.usa-nav__primary button:hover {
+   color: #ddd;
+}
+
+.usa-nav.is-visible {
+   background-color: #fff;
+}
+
+.usa-nav.is-visible .usa-nav__primary button {
+   color: #000;
+}
