@@ -9,14 +9,27 @@ function loadData() {
 			SCHOOL_DATA = results.data;
 
 			// x[n] where n is the column number of the school name (starting at 0)
+			// x[0] is the school district
+			// x[1] is the school name
+
+			// Create an array of only school names
 			let school_names = SCHOOL_DATA.map(x => x[1]).splice(1);
+
+			// Create an array of objects with the school name and district
+			// let header_row = SCHOOL_DATA[0];
+			// let col_0 = header_row[0];
+			// let col_1 = header_row[1];
+
+			// let school_names = SCHOOL_DATA.map(x => (
+			// 	{ [col_0]: x.slice(0, 1),
+			// 	  [col_1]: x.slice(1, 2) }
+			// 	)).splice(1);
 	
 			document.getElementById('search-field').addEventListener('keyup', function(e) {
 				input = document.getElementById('search-field').value;
 				console.log(input);
 				let search_results = fuzzysort.go(input, school_names, {
 					limit: 5,
-					allowType: true,
 					threshold: -10000
 				});
 				let search_suggestions = document.getElementById('search-suggestions');

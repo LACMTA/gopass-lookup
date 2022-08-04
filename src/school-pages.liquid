@@ -13,8 +13,10 @@ permalink: "schools/{{ school.name | slug }}/"
 		<div class="grid-row">
 			<div class="grid-col padding-x-4 padding-bottom-4">
 				<section id="intro">
-					<h1>Students ride for Free with GoPass</h1>
-					<p class="line-height-sans-4">K-12 students at schools across Los Angeles County can now ride Metro buses and trains for free with the Metro GoPass.</p>
+					<p><a href="/"><svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+						<use xlink:href="https://lacmta.github.io/design-system/dist/img/sprite.svg#arrow_back"></use>
+					  </svg> Previous</a></p>
+					<h1>Yes! {{ school.name }} has GoPass.</h1>
 				</section>
 				<section id="results-section">
 				</section>
@@ -23,7 +25,7 @@ permalink: "schools/{{ school.name | slug }}/"
   </div>
 </div>
 
-{{ school.name }}
+
 
 {{ school.phone }}
 
