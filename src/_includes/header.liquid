@@ -1,13 +1,32 @@
+<div class="usa-overlay"></div>
 <header class="usa-header usa-header--basic">
 	<div class="usa-nav-container">
-	  <div class="usa-navbar">
-		<div class="usa-logo" id="basic-logo">
-		  <em class="usa-logo__text">
-			<a href="https://www.metro.net" title="Metro.net">
-			  Metro
-			</a>
-		  </em>
+		<div class="usa-navbar">
+			<div class="usa-logo" id="-logo">
+				<a href="/" title="Home"><img src="{{ '/img/metro_logo_white.svg' | url }}" role="img" alt="Metro logo" /></a>
+			</div>
+			<button class="usa-menu-btn">Menu</button>
 		</div>
-	  </div>
+		<nav aria-label="Primary navigation" class="usa-nav">
+			<button class="usa-nav__close">
+				<img src="{{ '/assets/uswds/img/usa-icons/close.svg' | url }}" role="img" alt="Close" />
+			</button>
+			<ul class="usa-nav__primary usa-accordion">
+				<li class="usa-nav__primary-item">
+					<button class="usa-accordion__button usa-nav__link" aria-expanded="false"
+						aria-controls="basic-nav-section-two">
+						<svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+							<use xlink:href="{{ '/assets/uswds/img/sprite.svg#translate' | url }}"></use>
+						  </svg>
+						<span>Translate</span>
+					</button>
+					<ul id="basic-nav-section-two" class="usa-nav__submenu">
+						<li class="usa-nav__submenu-item">
+							<a href=""><span>Spanish</span></a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
 	</div>
-  </header>
+</header>

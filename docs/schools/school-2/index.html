@@ -1,30 +1,53 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://lacmta.github.io/design-system/dist/css/styles.css" type="text/css">
-	<link rel="stylesheet" href="css/site.css" type="text/css">
+	<!-- <link rel="stylesheet" href="https://lacmta.github.io/design-system/dist/css/styles.css" type="text/css"> -->
+    <link rel="stylesheet" href="/gopass-lookup/assets/uswds/css/styles.css">
+	<link rel="stylesheet" href="/gopass-lookup/css/site.css" type="text/css">
 
-	<script src="https://lacmta.github.io/design-system/dist/js/uswds-init.min.js"></script>
+	<!-- <script src="https://lacmta.github.io/design-system/dist/js/uswds-init.min.js"></script> -->
+    <script src="/gopass-lookup/assets/uswds/js/uswds-init.min.js"></script>
 	<title>GoPass Lookup</title>
 </head>
+
 <body>
-	<header class="usa-header usa-header--basic">
+	<div class="usa-overlay"></div>
+<header class="usa-header usa-header--basic">
 	<div class="usa-nav-container">
-	  <div class="usa-navbar">
-		<div class="usa-logo" id="basic-logo">
-		  <em class="usa-logo__text">
-			<a href="https://www.metro.net" title="Metro.net">
-			  Metro
-			</a>
-		  </em>
+		<div class="usa-navbar">
+			<div class="usa-logo" id="-logo">
+				<a href="/" title="Home"><img src="/gopass-lookup/img/metro_logo_white.svg" role="img" alt="Metro logo" /></a>
+			</div>
+			<button class="usa-menu-btn">Menu</button>
 		</div>
-	  </div>
+		<nav aria-label="Primary navigation" class="usa-nav">
+			<button class="usa-nav__close">
+				<img src="/gopass-lookup/assets/uswds/img/usa-icons/close.svg" role="img" alt="Close" />
+			</button>
+			<ul class="usa-nav__primary usa-accordion">
+				<li class="usa-nav__primary-item">
+					<button class="usa-accordion__button usa-nav__link" aria-expanded="false"
+						aria-controls="basic-nav-section-two">
+						<svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+							<use xlink:href="/gopass-lookup/assets/uswds/img/sprite.svg#translate"></use>
+						  </svg>
+						<span>Translate</span>
+					</button>
+					<ul id="basic-nav-section-two" class="usa-nav__submenu">
+						<li class="usa-nav__submenu-item">
+							<a href=""><span>Spanish</span></a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
 	</div>
-  </header>
+</header>
   
 	
 <div class="usa-section">
@@ -46,13 +69,14 @@
 
 
 
-123-456-7890
+987-654-3210
 
-123 Main St
+456 Broadway Ave
 
-	<script src="https://lacmta.github.io/design-system/dist/js/uswds.min.js"></script>
-	<script src="js/papaparse.min.js"></script>
+	<!-- <script src="https://lacmta.github.io/design-system/dist/js/uswds.min.js"></script> -->
+	<script src="/gopass-lookup/assets/uswds/js/uswds.min.js"></script>
+	<script src="/gopass-lookup/js/papaparse.min.js"></script>
 	<script src="https://rawgit.com/farzher/fuzzysort/master/fuzzysort.js"></script>
-	<script src="js/site.js"></script>
+	<script src="/gopass-lookup/js/site.js"></script>
 </body>
 </html>
