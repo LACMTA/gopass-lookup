@@ -48,7 +48,7 @@ function loadData() {
 				if (search_results.length == 0 && input.length != 0) {
 					console.log('no results');
 					let no_results = document.createElement('li');
-					no_results.innerHTML = '<em>School not found &gt;</em>';
+					no_results.innerHTML = '<em>School not found</em>';
 					no_results.onclick = (e) => {
 						console.log('no results clicked');
 					};
@@ -59,6 +59,8 @@ function loadData() {
 						let list_item = document.createElement('li');
 
 						list_item.innerHTML = fuzzysort.highlight(fuzzysort.single(input, element.target), '<strong>', '</strong>');
+						list_item.setAttribute('data-id', element.obj.id);
+						list_item.setAttribute('data-gopass', element.obj.participating);
 						list_item.addEventListener('click', suggestionClickHandler);
 
 						search_suggestions_list.appendChild(list_item);
