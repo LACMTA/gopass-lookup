@@ -1,28 +1,35 @@
-const GOOGLE_DOCS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSWbwrsqF-c---4lfw0LZWymd-f8sy8sLYkXgzh0OyeGATWwrvv7V1Mq5BcApn7F_-WYKP1KXy5shKw/pub?output=csv";
+// const GOOGLE_DOCS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSWbwrsqF-c---4lfw0LZWymd-f8sy8sLYkXgzh0OyeGATWwrvv7V1Mq5BcApn7F_-WYKP1KXy5shKw/pub?output=csv";
+const MERGED_SCHOOLS = "data/go_pass_schools_merged_with_california_dataset_2022-08-04.csv";
 
 var SCHOOL_DATA = {};
 
 function loadData() {
-	Papa.parse(GOOGLE_DOCS_URL, {
+	Papa.parse(MERGED_SCHOOLS, {
 		download: true,
 		complete: function(results) {
 			SCHOOL_DATA = results.data;
 
 			// x[n] where n is the column number of the school name (starting at 0)
-			// x[0] is the school district
-			// x[1] is the school name
+			// x[0] is the row id
+			// x[8] is the school name, some with district
+			// x[9] is the gopass participation status
+			// x[18] is the phone number
+			// x[21] is the latitude
+			// x[22] is the longitude
 
 			// Create an array of only school names
 			// let school_names = SCHOOL_DATA.map(x => x[1]).splice(1);
 
-			// Create an array of objects with the school name and district
+			// use the header row as the keys
 			let header_row = SCHOOL_DATA[0];
-			let col_0 = header_row[0];
-			let col_1 = header_row[1];
 
 			let school_names = SCHOOL_DATA.map(x => (
-				{ [col_0]: x.slice(0, 1)[0],
-				  [col_1]: x.slice(1, 2)[0] }
+				{ [header_row[0]]: x.slice(0, 1)[0],
+				  [header_row[8]]: x.slice(8, 9)[0],
+				  [header_row[9]]: x.slice(9, 10)[0],
+				  [header_row[18]]: x.slice(18, 19)[0],
+				  [header_row[21]]: x.slice(21, 22)[0],
+				  [header_row[22]]: x.slice(22, 23)[0] }
 				)).splice(1);
 	
 			document.getElementById('search-field').addEventListener('keyup', function(e) {
@@ -30,7 +37,7 @@ function loadData() {
 				console.log(input);
 
 				let search_results = fuzzysort.go(input, school_names, {
-					key: ['School'],
+					key: ['school_name_with_some_districts_attached'],
 					limit: 5,
 					threshold: -10000
 				});
