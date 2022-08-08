@@ -1,6 +1,7 @@
 // const GOOGLE_DOCS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSWbwrsqF-c---4lfw0LZWymd-f8sy8sLYkXgzh0OyeGATWwrvv7V1Mq5BcApn7F_-WYKP1KXy5shKw/pub?output=csv";
 const MERGED_SCHOOLS_CSV = "data/go_pass_schools_merged_with_california_dataset_2022-08-04.csv";
 const MERGED_SCHOOLS_JSON = "data/go_pass_schools_merged_with_california_dataset_2022-08-05.json";
+const SCHOOLS_JSON = "_data/schools.json";
 
 function loadDataFromJSON(file) {
 	fetch(file)
@@ -33,7 +34,7 @@ function loadDataFromJSON(file) {
 					let list_item = document.createElement('li');
 	
 					list_item.innerHTML = fuzzysort.highlight(fuzzysort.single(input, element.target), '<strong>', '</strong>');
-					list_item.setAttribute('data-id', element.obj.id);
+					list_item.setAttribute('data-id', element.obj.index);
 					list_item.setAttribute('data-gopass', element.obj.participating);
 					list_item.addEventListener('click', suggestionClickHandler);
 	
@@ -151,7 +152,7 @@ window.onload = (e) => {
 	search_suggestions.style.top = search_height + 'px';
 	search_suggestions.style.width = search_width + 'px';
 
-	loadDataFromJSON(MERGED_SCHOOLS_JSON);
+	loadDataFromJSON(SCHOOLS_JSON);
 	// loadDataFromCSV(MERGED_SCHOOLS_CSV);
 };
 
