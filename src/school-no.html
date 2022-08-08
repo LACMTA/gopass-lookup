@@ -1,11 +1,53 @@
 ---
-layout: default
+layout: results
+js: results.js
 ---
 
 <div class="usa-section">
     <div class="grid-container">
         <!--  margin-0 padding-0 -->
         <div class="grid-row">
+            <section id="intro">
+                <h1 id="results-header">Sorry, your school does not have GoPass yet.<br>:(</h1>
+                <p>If you are interested in bringing the GoPass to your school, please <a href="#">fill out a petition</a>.</p>
+            </section>
+        </div>
+        <div class="grid-row">
+            <div class="grid-col padding-x-4 padding-bottom-4">
+                <section id="faq">
+                    <h2>Other ways for students to save money:</h2>
+                    <div class="usa-accordion usa-accordion--bordered">
+                        <h4 class="usa-accordion__heading">
+                            <button class="usa-accordion__button" aria-expanded="true" aria-controls="b-a1">
+                                K-12 discounted fare
+                            </button>
+                        </h4>
+                        <div id="b-a1" class="usa-accordion__content usa-prose">
+                            <h3>One-Way Ride - $1</h3>
+                            <ul>
+                                <li>Includes 2 hours of unlimited transfers</li>
+                            </ul>
+                            <h3>30-Day Pass - $10</h3>
+                            <ul>
+                                <li>Includes unlimited usage for 30 days</li>
+                            </ul>
+                            <h3>How To Qualify</h3>
+                            <p>Your school must be in Los Angeles County</p>
+                            <button class="usa-button" type="submit">Apply for K-12 Reduced Fare</button>
+                        </div>
+                        <h4 class="usa-accordion__heading">
+                            <button class="usa-accordion__button" aria-expanded="false" aria-controls="b-a2">
+                                LIFE (Low Income Fare is Easy)
+                            </button>
+                        </h4>
+                        <div id="b-a2" class="usa-accordion__content usa-prose">
+                            <h3>30-Day LIFE Pass - $14</h3>
+                            <p>A parent or guardian must already be participating in the LIFE program for a student to be eligible</p>
+                            <button class="usa-button" type="submit">Learn more about the LIFE pass</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 </div>
