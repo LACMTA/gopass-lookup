@@ -35,7 +35,7 @@ function loadSuggestedSchools(school_list) {
 	if (search_results.length == 0 && input.length != 0) {
 		console.log('no results');
 		let no_results = document.createElement('li');
-		no_results.innerHTML = '<em>School not found</em>';
+		no_results.innerHTML = '<em>School not found? Let us know!</em>';
 		no_results.onclick = (e) => {
 			console.log('no results clicked');
 		};
