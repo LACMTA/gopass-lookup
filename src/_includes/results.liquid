@@ -1,0 +1,20 @@
+---
+siteTitle: "GoPass Lookup"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head' %}
+
+<body>
+	{% include 'header' %}
+  
+	{{ content }}
+
+	<!-- <script src="https://lacmta.github.io/design-system/dist/js/uswds.min.js"></script> -->
+	<script src="{{ '/assets/uswds/js/uswds.min.js' | url }}"></script>
+	<script src="{{ '/js/papaparse.min.js' | url }}"></script>
+	<script src="{{ '/js/results.js' | url }}"></script>
+</body>
+</html>
