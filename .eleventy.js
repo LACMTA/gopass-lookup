@@ -3,13 +3,14 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/js");
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("assets/uswds");
-	eleventyConfig.addPassthroughCopy("src/_data");
+	eleventyConfig.addPassthroughCopy("src/data");
 
 	return {
 		pathPrefix: "/gopass-lookup/",
 		dir: {
 			input: "src",
-			output: "docs"
+			output: "docs",
+			data: "data"
 		}
 	};
 };
