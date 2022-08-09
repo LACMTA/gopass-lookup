@@ -4,9 +4,11 @@ pagination:
   data: schools
   size: 1
   alias: school
-title: "{{ school.name }}"
+title: "{{ school.school_name_with_some_districts_attached }}"
 permalink: "schools/{{ school.index | slug }}/"
 ---
+
+{% if school.participating == True %}
 
 <div class="usa-section">
 	<div class="grid-container"> <!--  margin-0 padding-0 -->
@@ -14,19 +16,21 @@ permalink: "schools/{{ school.index | slug }}/"
 			<div class="grid-col padding-x-4 padding-bottom-4">
 				<section id="intro">
 					<p><a href="/"><svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-						<use xlink:href="https://lacmta.github.io/design-system/dist/img/sprite.svg#arrow_back"></use>
+						<use xlink:href="{{ '/assets/uswds/img/sprite.svg#arrow_back' | url}}"></use>
 					  </svg> Previous</a></p>
-					<h1>Yes! {{ school.name }} has GoPass.</h1>
-				</section>
-				<section id="results-section">
+					<h1>Yes! {{ school.school_name_with_some_districts_attached }} has GoPass.</h1>
+					<p>
+						{{ school.phone }}
+						<br>
+						{{ school.address_y }}
+					</p>
 				</section>
 			</div>
 		</div>
   </div>
 </div>
 
+{% else %}
 
 
-{{ school.phone }}
-
-{{ school.address }}
+{% endif %}
