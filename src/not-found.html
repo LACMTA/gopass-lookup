@@ -1,6 +1,5 @@
 ---
 layout: results
-js: results.js
 ---
 
 <div class="usa-section">
@@ -8,15 +7,32 @@ js: results.js
         <!--  margin-0 padding-0 -->
         <div class="grid-row">
             <section id="intro">
-                <h1 id="results-header">Sorry, we couldn't find your school:<br>Some School Name</h1>
-            </section>
-        </div>
-        <div class="grid-row">
-            <div class="grid-col padding-x-4 padding-bottom-4">
-                <p><a href="#">Try searching again?</p>
+                <h1 id="results-header">Was your school missing from our list?</h1>
+                
+                <h2>Please, let us know.</h2>
 
-                <p><a href="#">Contact us</p>
-            </div>
+                <form class="usa-form">
+                    <fieldset class="usa-fieldset">
+                      <label class="usa-label" for="school-name">School Name</label>
+                      <input
+                        class="usa-input"
+                        id="school-name"
+                        name="school-name"
+                        required
+                      />
+
+                      <label class="usa-label" for="school-address">School Address</label>
+                      <input
+                        class="usa-input"
+                        id="school-address"
+                        name="school-address"
+                        required
+                      />
+                    </fieldset>
+
+                    <button type="submit" class="usa-button">Submit</button>
+                </form>
+            </section>
         </div>
     </div>
 </div>
