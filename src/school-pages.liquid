@@ -1,36 +1,62 @@
 ---
-layout: default
+layout: results
 pagination:
   data: schools
   size: 1
   alias: school
-title: "{{ school.school_name_with_some_districts_attached }}"
+siteTitle: "{{ school.school_name_with_some_districts_attached }}"
 permalink: "schools/{{ school.index | slug }}/"
 ---
 
 {% if school.participating == true %}
 
 <div class="usa-section">
-	<div class="grid-container"> <!--  margin-0 padding-0 -->
+	<div class="grid-container">
+		<!--  margin-0 padding-0 -->
 		<div class="grid-row">
 			<div class="grid-col padding-x-4 padding-bottom-4">
 				<section id="intro">
-					<p><a href="/"><svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-						<use xlink:href="{{ '/assets/uswds/img/sprite.svg#arrow_back' | url}}"></use>
-					  </svg> Previous</a></p>
-					<h1>Yes! {{ school.school_name_with_some_districts_attached }} has GoPass.</h1>
-					<p>
-						{{ school.phone }}
-						<br>
-						{{ school.address }}
-					</p>
+					<h1>YES! {{ school.school_name_with_some_districts_attached }} has GoPass.<br>:)</h1>
+
+					<p>To get your GoPass, call your school at {{ school.phone }}.</p>
+
+					<p>Once you have your GoPass, you must activate the card to start riding for free. Instructions will
+						be included with the card.</p>
+
+					<p><a href="#">Look up another school.</a></p>
+
+					<p>Have questions about GoPass? <a href="#">Find answers.</a></p>
+
 				</section>
 			</div>
 		</div>
-  </div>
+	</div>
 </div>
 
 {% else %}
 
+<div class="usa-section">
+	<div class="grid-container">
+		<!--  margin-0 padding-0 -->
+		<div class="grid-row">
+			<div class="grid-col padding-x-4 padding-bottom-4">
+				<section id="intro">
+					<h1>NO. {{ school.school_name_with_some_districts_attached }} does not have GoPass yet.<br>:(</h1>
+
+					<h2>What can you do?</h2>
+
+					<ol>
+						<li>Let your school know <a href="#">you want GoPass</a>.</li>
+						<li>Check out other <a href="#">Metro Discounted Passes</a>.</li>
+						<li><a href="#">Look up another school.</a></li>
+					</ol>
+
+					<p>Have questions about GoPass? <a href="#">Find answers.</a></p>
+
+				</section>
+			</div>
+		</div>
+	</div>
+</div>
 
 {% endif %}
