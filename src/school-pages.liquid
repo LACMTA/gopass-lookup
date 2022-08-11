@@ -4,11 +4,12 @@ pagination:
   data: schools
   size: 1
   alias: school
-siteTitle: "{{ school.school_name_with_some_districts_attached }}"
+eleventyComputed:
+  title: "Metro GoPass Lookup - {{ school.school_name_with_some_districts_attached }}"
 permalink: "schools/{{ school.index | slug }}/"
 ---
 
-{% if school.participating == true %}
+{% if school.participating == true %} 
 
 <div class="usa-section">
 	<div class="grid-container">

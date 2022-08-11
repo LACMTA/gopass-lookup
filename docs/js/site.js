@@ -34,7 +34,8 @@ function loadSuggestedSchools(school_list) {
 		let no_results = document.createElement('li');
 		no_results.innerHTML = '<em>School not found? Let us know!</em>';
 		no_results.onclick = (e) => {
-			console.log('no results clicked');
+			let search_button = document.getElementById('search-button');
+			search_button.click();
 		};
 
 		search_suggestions_list.appendChild(no_results);
@@ -76,7 +77,13 @@ function clickSearchButton() {
 	let search_suggestions = document.getElementById('search-suggestions');
 	search_suggestions.style.display = 'none';
 
-	window.location.href = "schools/" + this.getAttribute('data-id');
+	let id = this.getAttribute('data-id');
+
+	if (id != null) {
+		window.location.href = "schools/" + this.getAttribute('data-id');
+	} else {
+		window.location.href = "not-found/";
+	}
 }
 
 window.onload = (e) => {
