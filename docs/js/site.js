@@ -21,7 +21,8 @@ window.onload = (e) => {
 	search_suggestions.style.top = search_height + 'px';
 	search_suggestions.style.width = search_width + 'px';
 
-	document.getElementById('search-button').addEventListener('click', clickSearchButton);
+	document.querySelector('form#school-search').addEventListener('submit', clickSearchButton);
+	// document.getElementById('search-button').addEventListener('click', clickSearchButton);
 };
 
 function loadDataFromJSON(file) {
@@ -61,8 +62,12 @@ function loadSuggestedSchools(school_list) {
 
 			search_suggestions_list.appendChild(no_results);
 		} else {
-			search_results.forEach(element => {
+			search_results.forEach((element, index) => {
 				let list_item = document.createElement('li');
+
+				if (index == 0) {
+					list_item.classList.add('active');
+				}
 
 				list_item.innerHTML = fuzzysort.highlight(fuzzysort.single(input, element.target), '<strong>', '</strong>');
 				list_item.setAttribute('data-id', element.obj.index);
@@ -97,46 +102,57 @@ function showSuggestionList() {
 
 function navigateSuggestionList(event) {
 	console.log(event.target);
+	let search_field = document.getElementById('search-field');
+	let search_button = document.getElementById('search-button');
 	let search_suggestions = document.getElementById('search-suggestions');
 	let suggestion_list_items = document.querySelectorAll('#search-suggestions-list > li');
 	let active_suggestion = document.querySelector('#search-suggestions-list > li.active');
-	// up: 38
-	// down: 40
-	console.log(search_suggestions.querySelector('li'));
-	console.log(search_suggestions.querySelector('li').classList);
-	console.log(search_suggestions.querySelector('li').classList.contains('active'));
-	console.log('list items: ' + suggestion_list_items[0].classList);
 
 	if (isVisible(search_suggestions)) {
 		switch (event.keyCode) {
-			case 38:
+			case 38: // up
 				if (active_suggestion != null) {
 					active_suggestion.classList.toggle('active');
 					if (active_suggestion.previousElementSibling != null) {
+						search_field.value = active_suggestion.previousElementSibling.innerText;
+						search_button.setAttribute('data-id', active_suggestion.previousElementSibling.getAttribute('data-id'));
 						active_suggestion.previousElementSibling.classList.toggle('active');
 					} else {
+						search_field.value = suggestion_list_items[suggestion_list_items.length - 1].innerText;
+						search_button.setAttribute('data-id', suggestion_list_items[suggestion_list_items.length - 1].getAttribute('data-id'));
 						suggestion_list_items[suggestion_list_items.length - 1].classList.toggle('active');
 					}
 				} else {
+					search_field.value = suggestion_list_items[suggestion_list_items.length - 1].innerText;
+					search_button.setAttribute('data-id', suggestion_list_items[suggestion_list_items.length - 1].getAttribute('data-id'));
 					suggestion_list_items[suggestion_list_items.length - 1].classList.toggle('active');
 				}
 				break;
-			case 40:
+			case 40: // down
 				if (active_suggestion != null) {
 					active_suggestion.classList.toggle('active');
 
 					if (active_suggestion.nextElementSibling != null) {
+						search_field.value = active_suggestion.nextElementSibling.innerText;
+						search_button.setAttribute('data-id', active_suggestion.nextElementSibling.getAttribute('data-id'));
 						active_suggestion.nextElementSibling.classList.toggle('active');
 					} else {
+						search_field.value = suggestion_list_items[0].innerText;
+						search_button.setAttribute('data-id', suggestion_list_items[0].getAttribute('data-id'));
 						suggestion_list_items[0].classList.toggle('active');
 					}
 				} else {
+					search_field.value = suggestion_list_items[0].innerText;
+					search_button.setAttribute('data-id', suggestion_list_items[0].getAttribute('data-id'));
 					suggestion_list_items[0].classList.toggle('active');
 				}
 				break;
 			case 13:
 				if (active_suggestion != null) {
-					active_suggestion.click();
+					// let search_button = document.getElementById('search-button');
+
+					// search_button.setAttribute('data-id', active_suggestion.getAttribute('data-id'));
+					search_button.click();
 				}
 				break;
 		}
@@ -147,13 +163,22 @@ function clickSearchButton() {
 	let search_suggestions = document.getElementById('search-suggestions');
 	search_suggestions.style.display = 'none';
 
-	let id = this.getAttribute('data-id');
+	let search_button = document.querySelector('#search-button');
+
+	let id = search_button.getAttribute('data-id');
 
 	if (id != null) {
-		window.location.href = "schools/" + this.getAttribute('data-id');
+		loadSchoolPage(id);
 	} else {
 		window.location.href = "not-found/";
 	}
+}
+
+function loadSchoolPage(id) {
+	let form = document.querySelector('#school-search');
+	form.setAttribute('action', 'schools/' + id);
+
+	window.location.href = "schools/" + id;
 }
 
 
