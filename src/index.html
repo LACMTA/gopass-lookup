@@ -1,6 +1,5 @@
 ---
 layout: default
-js: site.js
 ---
 
 <div class="usa-section">
@@ -8,20 +7,18 @@ js: site.js
 		<div class="grid-row">
 			<div class="grid-col padding-x-4 padding-bottom-4">
 				<section id="intro">
-					<h1>Students ride for Free with GoPass</h1>
-					<p class="line-height-sans-4">K-12 students at schools across Los Angeles County can now ride Metro buses and trains for free with the Metro GoPass.</p>
+					<h1>Check to see if your school has GoPass</h1>
+					<p class="line-height-sans-4">Students at participating K-12 schools and community colleges in LA County can now ride Metro buses and trains for free with GoPass.</p>
 				</section>
-			</div>
-		</div>
-		<div class="grid-row bg-base-lighter">
-			<div class="grid-col padding-x-4 padding-bottom-4">
 				<section id="search-section">
-					<h2>See if your school has GoPass</h2>
 					<form class="usa-search usa-search--big" role="search">
 						<label class="usa-sr-only" for="search-field"> Search </label>
 						<input class="usa-input" id="search-field" type="search" name="search" autocomplete="off" />
 						<button class="usa-button" type="button" id="search-button">
-							<span class="usa-search__submit-text">Search</span>
+							<!-- <span class="usa-search__submit-text">Search</span> -->
+							<svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+								<use xlink:href="{{ "assets/uswds/img/sprite.svg#search" | url }}"></use>
+							  </svg>
 						</button>
 						<div id="search-suggestions">
 							<ul id="search-suggestions-list">
@@ -29,9 +26,16 @@ js: site.js
 						</div>
 					</form>
 				</section>
+				<section id="info">
+					<p>Don't see your school when you type? <a href="#">Let us know it's missing.</a></p>
+
+					<p>Already have a GoPass? <a href="#">Activate your card to start riding for free.</a></p>
+					<p>Have questions about GoPass? <a href="#">Find answers.</a></p>
+					
+				</section>
 			</div>
 		</div>
-		<div class="grid-row">
+		<!-- <div class="grid-row">
 			<div class="grid-col padding-x-4 padding-bottom-4">
 				<section id="contact">
 					<h2>Questions about GoPass?</h2>
@@ -105,6 +109,6 @@ js: site.js
 					  </div>
 				</section>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
