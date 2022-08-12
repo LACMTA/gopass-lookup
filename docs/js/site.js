@@ -6,7 +6,7 @@ loadDataFromJSON(SCHOOLS_JSON);
 
 document.addEventListener('click', clickOutsideSearchInput);
 
-window.onload = (e) => {
+window.addEventListener('load', function() {
 	let search_field = document.getElementById('search-field');
 	search_field.addEventListener('click', showSuggestionList);
 	search_field.addEventListener('input', function() {
@@ -23,7 +23,8 @@ window.onload = (e) => {
 
 	document.querySelector('form#school-search').addEventListener('submit', clickSearchButton);
 	// document.getElementById('search-button').addEventListener('click', clickSearchButton);
-};
+});
+
 
 function loadDataFromJSON(file) {
 	fetch(file)
@@ -97,6 +98,9 @@ function clickSuggestionList(e) {
 function showSuggestionList() {
 	let search_suggestions = document.getElementById('search-suggestions');
 	let search_suggestions_list = document.getElementById('search-suggestions-list');
+	// let search_field = document.querySelector('#search-field');
+	// search_suggestions.style.top = search_field.getBoundingClientRect().bottom + 'px';
+
 	if (search_suggestions_list.childElementCount > 0) {
 		search_suggestions.style.display = 'block';
 	}
@@ -110,7 +114,7 @@ function navigateSuggestionList(event) {
 	let suggestion_list_items = document.querySelectorAll('#search-suggestions-list > li');
 	let active_suggestion = document.querySelector('#search-suggestions-list > li.active');
 
-	if (isElemVisible(search_suggestions)) {
+	if (isGframeVisible(search_suggestions)) {
 		switch (event.keyCode) {
 			case 38: // up
 				if (active_suggestion != null) {
@@ -202,7 +206,7 @@ function clickOutsideSearchInput(e) {
 	let search_field = document.getElementById('search-field');
 	let search_suggestions = document.getElementById('search-suggestions');
 
-	if (!search_suggestions.contains(e.target) && !search_field.contains(e.target) && isElemVisible(search_suggestions)) {
+	if (!search_suggestions.contains(e.target) && !search_field.contains(e.target) && isGframeVisible(search_suggestions)) {
 		search_suggestions.style.display = 'none';
 	}
 }

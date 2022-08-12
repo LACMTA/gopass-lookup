@@ -131,10 +131,10 @@ function hideIframeOnClick() {
 
 function resetInterval() {
     if (interval) clearInterval(interval);
-    interval = setInterval(() => isOpen = isElemVisible(gframe), 500);
+    interval = setInterval(() => isOpen = isGframeVisible(gframe), 500);
 }
 
-function isElemVisible(elem) {
+function isGframeVisible(elem) {
     return !(elem.offsetWidth === 0 && elem.offsetHeight === 0);
 }
 
@@ -151,7 +151,7 @@ function migrateTranslateOnResize() {
     lastResizeWasMobile = isMobile();
 }
 
-window.onload = function () {
+window.addEventListener('load', function() {
     gframe = document.querySelector('.goog-te-menu-frame');
     navTranslate = document.querySelector('.header-bar__translate');
     header = document.querySelector(".header");
@@ -177,11 +177,11 @@ window.onload = function () {
     resetInterval();
 
     setInterval(function () {
-        if (isElemVisible(gframe) && !header.classList.contains('header--is-open-translate')) {
+        if (isGframeVisible(gframe) && !header.classList.contains('header--is-open-translate')) {
             header.classList.add('header--is-open-translate');
             header.classList.remove("header--is-open-search");
             header.classList.remove("header--is-open-menu");
-        } else if (!isElemVisible(gframe) && header.classList.contains('header--is-open-translate')) {
+        } else if (!isGframeVisible(gframe) && header.classList.contains('header--is-open-translate')) {
             header.classList.remove('header--is-open-translate');
         }
     }, 1);
@@ -200,11 +200,12 @@ window.onload = function () {
             item.addEventListener('touch', hideIframeOnClick);
         });
     }, 1000);
-};
 
-window.onclick = () => {
+});
+
+window.addEventListener('click', function() {
     if (gframe) gframe.style.display = 'none';
-};
+});
 
 // window.onresize = () => {
 //     migrateTranslateOnResize();
