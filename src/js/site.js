@@ -22,7 +22,7 @@ window.addEventListener('load', function() {
 	search_suggestions.style.width = search_width + 'px';
 
 	document.querySelector('form#school-search').addEventListener('submit', clickSearchButton);
-	// document.getElementById('search-button').addEventListener('click', clickSearchButton);
+	document.getElementById('search-button').addEventListener('click', clickSearchButton);
 });
 
 
@@ -86,7 +86,11 @@ function loadSuggestedSchools(school_list) {
 
 function clickSuggestionList(e) {
 	let search_field = document.getElementById('search-field');
-	search_field.value = e.target.innerText;
+	if (e.target.tagName == 'LI') {
+		search_field.value = e.target.innerText;
+	} else {
+		search_field.value = e.target.parentNode.innerText;
+	}
 
 	let selected_school_id = e.target.getAttribute('data-id');
 	let search_button = document.getElementById('search-button');
@@ -98,8 +102,6 @@ function clickSuggestionList(e) {
 function showSuggestionList() {
 	let search_suggestions = document.getElementById('search-suggestions');
 	let search_suggestions_list = document.getElementById('search-suggestions-list');
-	// let search_field = document.querySelector('#search-field');
-	// search_suggestions.style.top = search_field.getBoundingClientRect().bottom + 'px';
 
 	if (search_suggestions_list.childElementCount > 0) {
 		search_suggestions.style.display = 'block';
