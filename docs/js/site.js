@@ -54,10 +54,12 @@ function loadSuggestedSchools(school_list) {
 
 		if (search_results.length == 0 && input.length != 0) {
 			let no_results = document.createElement('li');
+			no_results.setAttribute('data-id', '-1');
 			no_results.innerHTML = '<em>School not found? Let us know!</em>';
 			no_results.onclick = (e) => {
-				let search_button = document.getElementById('search-button');
-				search_button.click();
+				// let search_button = document.getElementById('search-button');
+				// search_button.click();
+				window.location.href = "not-found/";
 			};
 
 			search_suggestions_list.appendChild(no_results);
@@ -169,16 +171,19 @@ function clickSearchButton() {
 
 	if (id != null) {
 		loadSchoolPage(id);
-	} else {
-		window.location.href = "not-found/";
 	}
 }
 
 function loadSchoolPage(id) {
 	let form = document.querySelector('#school-search');
-	form.setAttribute('action', 'schools/' + id);
 
-	window.location.href = "schools/" + id;
+	if (id == '-1') {
+		form.setAttribute('action', 'not-found');
+		window.location.href = "not-found";
+	} else {
+		form.setAttribute('action', 'schools/' + id);
+		window.location.href = "schools/" + id;
+	}
 }
 
 
