@@ -1,3 +1,7 @@
+function isMobile() {
+    return window.innerWidth < 1024;
+}
+
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
         pageLanguage: 'en',
@@ -19,7 +23,7 @@ function styleGT() {
     let style_node = document.createElement('style');
     style_node.setAttribute('type', 'text/css');
 
-    style_node.innerHTML = `
+    let style_code = `
         .goog-te-menu2 {
             background-color: white;
             border: none;
@@ -64,24 +68,20 @@ function styleGT() {
             background: #555;
         }`;
 
-    gframe_head.appendChild(style_node);
+    if (isMobile()) {
+        style_code += `
+        .goog-te-menu2 {
+            width: 100% !important;
+        }`;
+    } else {
+        style_code += `
+        .goog-te-menu2 {
+            width: 225px !important;
+        }`;
+    }
 
-    // if (isMobile())
-    //     gframe_head.appendChild(`
-    //         <style type="text/css">
-    //         .goog-te-menu2 {
-    //             width: 100% !important;
-    //         }
-    //         </style>`
-    //     );
-    // else
-    //     gframe_head.appendChild(`
-    //         <style type="text/css">
-    //         .goog-te-menu2 {
-    //             width: 225px !important;
-    //         }
-    //         </style>`
-    //     );
+    style_node.innerHTML = style_code;
+    gframe_head.appendChild(style_node);
 }
 
 function updateLanguageNames() {
@@ -138,12 +138,18 @@ function isElemVisible(elem) {
     return !(elem.offsetWidth === 0 && elem.offsetHeight === 0);
 }
 
-// function migrateTranslateOnResize() {
-//     if (lastResizeWasMobile === isMobile()) return;
-//     console.log(isMobile(), $(`.header-bar--${isMobile() ? 'mobile' : 'desktop'} .header-bar__translate-clickable`));
-//     $(`.header-bar--${isMobile() ? 'mobile' : 'desktop'} .header-bar__translate-clickable`).append($("#google_translate_element"));
-//     lastResizeWasMobile = isMobile();
-// }
+function migrateTranslateOnResize() {
+    let translate_element = document.querySelector('#google_translate_element');
+
+    if (lastResizeWasMobile === isMobile()) {
+        return;
+    }
+    console.log('.header-bar--' + (isMobile() ? 'mobile' : 'desktop') + ' .header-bar__translate-clickable');
+
+    document.querySelector('.header-bar--' + (isMobile() ? 'mobile' : 'desktop') + ' .header-bar__translate-clickable').appendChild(translate_element);
+
+    lastResizeWasMobile = isMobile();
+}
 
 window.onload = function () {
     gframe = document.querySelector('.goog-te-menu-frame');
@@ -159,6 +165,9 @@ window.onload = function () {
             isOpen = false;
         } else {
             gframe.style.display = 'block';
+            let navContainer = document.querySelector('.nav-container');
+            let rect = navContainer.getBoundingClientRect();
+            gframe.style.top = rect.bottom + 'px';
             isOpen = true;
         }
         resetInterval();
@@ -180,7 +189,7 @@ window.onload = function () {
     setInterval(function () {
         updateLanguageNames();
         let elems = gframe.contentWindow.document.querySelectorAll('.goog-te-menu2-item,.goog-te-menu2-item-selected');
-        
+
         elems.forEach(item => {
             item.removeEventListener('click', hideIframeOnClick);
             item.removeEventListener('touchstart', hideIframeOnClick);
@@ -197,6 +206,9 @@ window.onclick = () => {
     if (gframe) gframe.style.display = 'none';
 };
 
-// $(window).on("resize", migrateTranslateOnResize);
+// window.onresize = () => {
+//     migrateTranslateOnResize();
+// };
+
 // migrateTranslateOnResize();
 
