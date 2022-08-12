@@ -176,8 +176,9 @@ function clickSearchButton() {
 
 function loadSchoolPage(id) {
 	let form = document.querySelector('#school-search');
+	let input = document.querySelector('#search-field');
 
-	if (id == '-1') {
+	if (id == '-1' && input.value != '') {
 		form.setAttribute('action', 'not-found');
 		window.location.href = "not-found";
 	} else {
