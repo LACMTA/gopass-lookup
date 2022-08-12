@@ -14,6 +14,87 @@
     <script src="/gopass-lookup/assets/uswds/js/uswds-init.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fuzzysort@2.0.1/fuzzysort.min.js"></script>
 
+
+	<style type="text/css">
+		.header-bar__translate-clickable {
+  cursor: pointer;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.header-bar__translate-clickable .goog-te-gadget,
+.header-bar__translate-clickable .goog-te-gadget-simple,
+.header-bar__translate-clickable #google_translate_element {
+  display: block !important;
+  height: 100%;
+  width: 100%;
+}
+.header-bar__translate-presentation {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  height: 100%;
+  letter-spacing: 0.05px;
+  line-height: 22px;
+  padding: 10px;
+}
+.header-bar__translate-presentation img {
+  margin-right: 6px;
+  width: 16px;
+}
+
+		.goog-te-menu2 {
+		  background-color: white;
+		  border: none;
+		  overflow: auto;
+		  /*max-height: 350px;*/
+		  padding:0;
+		}
+		table,tbody,tr,td{
+		  display: block;
+		}
+		.goog-te-menu2-item div,
+		.goog-te-menu2-item:link div,
+		.goog-te-menu2-item:visited div,
+		.goog-te-menu2-item:active div,
+		.goog-te-menu2-item-selected div,
+		.goog-te-menu2-item-selected:link div,
+		.goog-te-menu2-item-selected:visited div,
+		.goog-te-menu2-item-selected:active div{
+		  background: transparent;
+		  letter-spacing: .35px;
+		  padding: 16px;
+		  font-family: 'Open Sans', sans-serif;
+		  font-style: normal;
+		  font-weight: 600;
+		  font-size: 16px;
+		  line-height: 130%;
+		  color: #5E6871;
+		}
+		.goog-te-menu2-item-selected .text{
+		  font-family: 'Open Sans', sans-serif;
+		  font-weight: 600;
+		  font-style: normal;
+		  font-size: 16px;
+		  line-height: 130%;
+		  color: #5E6871;
+		}
+		.goog-te-menu2-item-selected .indicator{
+		  display:none;
+		}
+		.goog-te-menu2-item:hover div{
+		  color: #ECECEC;
+		  background: #555;
+		}
+	  </style>
+
 	<title>Metro GoPass Lookup - Nueva Vista Elementary</title>
 
 </head>
@@ -24,23 +105,33 @@
 	<div class="usa-nav-container">
 		<div class="usa-navbar">
 			<div class="usa-logo" id="-logo">
-				<a href="/" title="Home"><img src="/gopass-lookup/img/metro_logo_white.svg" role="img" alt="Metro logo" /></a>
+				<a href="/" title="Home"><img src="/gopass-lookup/img/metro_logo_white.svg" role="img"
+						alt="Metro logo" /></a>
 			</div>
 			<button class="usa-menu-btn">Menu</button>
 		</div>
-		<nav aria-label="Primary navigation" class="usa-nav">
+		<nav aria-label="Primary navigation" class="usa-nav header">
 			<button class="usa-nav__close">
 				<img src="/gopass-lookup/assets/uswds/img/usa-icons/close.svg" role="img" alt="Close" />
 			</button>
 			<ul class="usa-nav__primary usa-accordion">
 				<li class="usa-nav__primary-item">
-					<button class="usa-accordion__button usa-nav__link" aria-expanded="false"
-						aria-controls="basic-nav-section-two">
-						<svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-							<use xlink:href="/gopass-lookup/assets/uswds/img/sprite.svg#translate"></use>
-						  </svg>
-						<span>Translate</span>
-					</button>
+					<div class="button button--header-translate header-bar__translate header-bar__translate--desktop">
+						<div class="header-bar__translate-clickable">
+							<div id="google_translate_element">
+							</div>
+						</div>
+						<div class="header-bar__translate-presentation">
+							<button class="usa-accordion__button usa-nav__link" aria-expanded="false"
+								aria-controls="basic-nav-section-two">
+								<svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+									<use xlink:href="/gopass-lookup/assets/uswds/img/sprite.svg#translate"></use>
+								</svg>
+								<span>Translate</span>
+							</button>
+						</div>
+					</div>
+
 					<ul id="basic-nav-section-two" class="usa-nav__submenu">
 						<li class="usa-nav__submenu-item">
 							<a href=""><span>Spanish</span></a>

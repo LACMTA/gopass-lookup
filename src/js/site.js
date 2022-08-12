@@ -110,7 +110,7 @@ function navigateSuggestionList(event) {
 	let suggestion_list_items = document.querySelectorAll('#search-suggestions-list > li');
 	let active_suggestion = document.querySelector('#search-suggestions-list > li.active');
 
-	if (isVisible(search_suggestions)) {
+	if (isElemVisible(search_suggestions)) {
 		switch (event.keyCode) {
 			case 38: // up
 				if (active_suggestion != null) {
@@ -202,7 +202,7 @@ function clickOutsideSearchInput(e) {
 	let search_field = document.getElementById('search-field');
 	let search_suggestions = document.getElementById('search-suggestions');
 
-	if (!search_suggestions.contains(e.target) && !search_field.contains(e.target) && isVisible(search_suggestions)) {
+	if (!search_suggestions.contains(e.target) && !search_field.contains(e.target) && isElemVisible(search_suggestions)) {
 		search_suggestions.style.display = 'none';
 	}
 }
