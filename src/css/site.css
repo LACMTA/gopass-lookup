@@ -34,3 +34,7 @@
 #search-suggestions-list li:hover {
   background-color: #eee;
 }
+
+#search-suggestions-list li.active {
+  background-color: #eee;
+}
