@@ -1,6 +1,6 @@
 // const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");
 require('dotenv').config()
-const { ELEVENTY_ENV } = process.env
+const { ELEVENTY_ENV } = process.env || 'default_variable'
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/css");
