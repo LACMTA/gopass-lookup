@@ -3,6 +3,7 @@ const MERGED_SCHOOLS_CSV = "data/go_pass_schools_merged_with_california_dataset_
 const MERGED_SCHOOLS_JSON = "data/go_pass_schools_merged_with_california_dataset_2022-08-05.json";
 const SCHOOLS_JSON = "data/schools.json";
 
+
 let SCHOOLS_DATA = [];
 
 function loadDataFromJSON(file) {
@@ -192,3 +193,4 @@ function clickOutsideSearchInput(e) {
 }
 
 const isVisible = elem => !!elem && !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length ); 
+
