@@ -3,22 +3,26 @@ layout: default
 ---
 
 <div class="usa-section">
-	<div class="grid-container"> <!--  margin-0 padding-0 -->
-		<div class="grid-row">
-			<div class="grid-col padding-x-4 padding-bottom-4">
+	<div class="grid-container">
+		<!--  margin-0 padding-0 -->
+		<div class="grid-row grid-gap flex-reverse-row">
+			<div class="tablet:grid-col-5 tablet:grid-offset-1">
 				<section id="intro">
-					<h1>Check to see if your school has GoPass</h1>
-					<p class="line-height-sans-4">Students at participating K-12 schools and community colleges in LA County can now ride Metro buses and trains for free with GoPass.</p>
+					<span class="site-subheading">Students ride for free with GoPass</span>
+					<h1>Does your school have GoPass?</h1>
+					<p class="line-height-sans-4">Students at participating K-12 schools and community colleges in LA
+						County can now ride Metro buses and trains for free with GoPass.</p>
 				</section>
+
 				<section id="search-section">
-					<form id="school-search" class="usa-search usa-search--big" role="search">
-						<label class="usa-sr-only" for="search-field"> Search </label>
-						<input class="usa-input" id="search-field" type="search" name="search" autocomplete="off" />
+					<form id="school-search" class="usa-search usa-search--small" role="search">
+						<label class="usa-sr-only" for="search-field"> Search for a school </label>
+						<input class="usa-input" id="search-field" type="search" name="search" autocomplete="off" placeholder="Type name of school" />
 						<button class="usa-button" type="button" id="search-button">
 							<!-- <span class="usa-search__submit-text">Search</span> -->
-							<svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-								<use xlink:href="{{ "assets/uswds/img/sprite.svg#search" | url }}"></use>
-							  </svg>
+							<svg class="usa-search__submit-icon" alt="Search for school participating in GoPass" aria-hidden="true" focusable="false" role="img">
+								<use xlink:href="{{ " assets/uswds/img/sprite.svg#search" | url }}"></use>
+							</svg>
 						</button>
 						<div id="search-suggestions">
 							<ul id="search-suggestions-list">
@@ -26,89 +30,28 @@ layout: default
 						</div>
 					</form>
 				</section>
-				<section id="info">
-					<p>Don't see your school when you type? <a href="#">Let us know it's missing.</a></p>
-
-					<p>Already have a GoPass? <a href="#">Activate your card to start riding for free.</a></p>
-					<p>Have questions about GoPass? <a href="#">Find answers.</a></p>
-					
-				</section>
+			</div>
+			<div class="tablet:grid-col-6">
+				<img src="{{ '/img/2uu9enzp.jpeg' | url }}" class="rounded" alt="3 male students on a Metro train are smiling while looking at a smartphone">
 			</div>
 		</div>
-		<!-- <div class="grid-row">
-			<div class="grid-col padding-x-4 padding-bottom-4">
-				<section id="contact">
-					<h2>Questions about GoPass?</h2>
-					<p class="line-height-sans-4">Our Customer Care team has answers.</p>
-					<p class="line-height-sans-4"><svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-						<use xlink:href="{{ '/assets/uswds/img/sprite.svg#phone' | url}}"></use>
-					  </svg> (866) 827-8646</p>
-					<p class="line-height-sans-4"><svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
-						<use xlink:href="{{ '/assets/uswds/img/sprite.svg#mail_outline' | url}}"></use>
-					  </svg> <a href="mailto:gopass@taptogo.net">GoPass@taptogo.net</a></p>
-				</section>
-				<section id="faq">
-					<h2>Questions people ask:</h2>
-					<div class="usa-accordion usa-accordion--bordered">
-						<h4 class="usa-accordion__heading">
-						  <button
-							class="usa-accordion__button"
-							aria-expanded="true"
-							aria-controls="b-a1"
-						  >
-							What is GoPass?
-						  </button>
-						</h4>
-						<div id="b-a1" class="usa-accordion__content usa-prose">
-						  <p>
-							GoPass is a free pass for Metro bus and rail that is available to K-12 students at schools across Los Angeles County.
-						  </p>
-						</div>
-						<h4 class="usa-accordion__heading">
-						  <button
-							class="usa-accordion__button"
-							aria-expanded="false"
-							aria-controls="b-a2"
-						  >
-							How do I register for GoPass?
-						  </button>
-						</h4>
-						<div id="b-a2" class="usa-accordion__content usa-prose">
-						  <p>
-							Go to taptogo.net
-						  </p>
-						</div>
-						<h4 class="usa-accordion__heading">
-						  <button
-							class="usa-accordion__button"
-							aria-expanded="false"
-							aria-controls="b-a3"
-						  >
-							Who qualifies for GoPass
-						  </button>
-						</h4>
-						<div id="b-a3" class="usa-accordion__content usa-prose">
-						  <p>
-							Any student in grades K-12 attending a participating school within LA County.
-						  </p>
-						</div>
-						<h4 class="usa-accordion__heading">
-							<button
-							  class="usa-accordion__button"
-							  aria-expanded="false"
-							  aria-controls="b-a4"
-							>
-							  How do I replace a lost GoPass?
-							</button>
-						  </h4>
-						  <div id="b-a4" class="usa-accordion__content usa-prose">
-							<p>
-							  Contact TAP.
-							</p>
-						  </div>
-					  </div>
-				</section>
+	</div>
+</div>
+<div class="usa-section section-highlight">
+	<div class="grid-container">
+		<div class="grid-row grid-gap">
+			<div class="tablet:grid-col">
+				<h2>Don't see your school when you type?</h2>
+				<p><strong><a href="#">Let us know it's missing.</a></strong></p>
 			</div>
-		</div> -->
+			<div class="tablet:grid-col">
+				<h2>Already have a GoPass?</h2>
+				<p><strong><a href="#">Activate your card to start riding for free.</a></strong></p>
+			</div>
+			<div class="tablet:grid-col">
+				<h2>Have questions about GoPass?</h2>
+				<p><strong><a href="#">Find answers.</a></strong></p>
+			</div>
+		</div>
 	</div>
 </div>
