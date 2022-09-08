@@ -6,33 +6,35 @@ layout: default
 	<div class="grid-container">
 		<!--  margin-0 padding-0 -->
 		<div class="grid-row grid-gap flex-reverse-row">
-			<div class="tablet:grid-col-5 tablet:grid-offset-1">
-				<section id="intro">
-					<span class="site-subheading">Students ride for free with GoPass</span>
-					<h1>Does your school have GoPass?</h1>
-					<p class="line-height-sans-4">Students at participating K-12 schools and community colleges in LA
-						County can now ride Metro buses and trains for free with GoPass.</p>
-				</section>
+			<div class="tablet:grid-col-5 grid-gap display-flex flex-row flex-align-center">
+				<div>
+					<section id="intro">
+						<span class="site-subheading">Students ride for free with GoPass</span>
+						<h1>Does your school have GoPass?</h1>
+						<p class="line-height-sans-4">Students at participating K-12 schools and community colleges in LA
+							County can now ride Metro buses and trains for free with GoPass.</p>
+					</section>
 
-				<section id="search-section">
-					<form id="school-search" class="usa-search usa-search--small" role="search">
-						<label class="usa-sr-only" for="search-field"> Search for a school </label>
-						<input class="usa-input" id="search-field" type="search" name="search" autocomplete="off" placeholder="Type name of school" />
-						<button class="usa-button" type="button" id="search-button">
-							<!-- <span class="usa-search__submit-text">Search</span> -->
-							<svg class="usa-search__submit-icon" alt="Search for school participating in GoPass" aria-hidden="true" focusable="false" role="img">
-								<use xlink:href="{{ " assets/uswds/img/sprite.svg#search" | url }}"></use>
-							</svg>
-						</button>
-						<div id="search-suggestions">
-							<ul id="search-suggestions-list">
-							</ul>
-						</div>
-					</form>
-				</section>
+					<section id="search-section">
+						<form id="school-search" class="usa-search usa-search--small padding-bottom-4" role="search">
+							<label class="usa-sr-only" for="search-field"> Search for a school </label>
+							<input class="usa-input" id="search-field" type="search" name="search" autocomplete="off" placeholder="Type name of school" />
+							<button class="usa-button" type="button" id="search-button">
+								<!-- <span class="usa-search__submit-text">Search</span> -->
+								<svg class="usa-search__submit-icon" alt="Search for school participating in GoPass" aria-hidden="true" focusable="false" role="img">
+									<use xlink:href="{{ " assets/uswds/img/sprite.svg#search" | url }}"></use>
+								</svg>
+							</button>
+							<div id="search-suggestions">
+								<ul id="search-suggestions-list">
+								</ul>
+							</div>
+						</form>
+					</section>
+				</div>
 			</div>
-			<div class="tablet:grid-col-6">
-				<img src="{{ '/img/2uu9enzp.jpeg' | url }}" class="rounded" alt="3 male students on a Metro train are smiling while looking at a smartphone">
+			<div class="tablet:grid-col-7">
+				<img src="{{ '/img/2uu9enzp.jpeg' | url }}" class="rounded image-large" alt="3 male students on a Metro train are smiling while looking at a smartphone">
 			</div>
 		</div>
 	</div>

@@ -110,3 +110,16 @@ svg.usa-search__submit-icon {
   display: flex;
   flex-direction: row-reverse;
 }
+
+.image-large {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media screen and (max-width: 640px) {
+  .image-large {
+    height: 300px;
+  }
+}
