@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 #search-suggestions {
   position: absolute;
   z-index: 100;
@@ -39,14 +43,19 @@
   background-color: #eee;
 }
 
-
 .section-highlight {
   background-color: #E5F1FE;
+}
+
+.container-outer {
+  height: 100%;
+  min-height: 100%;
 }
 
 .usa-footer, .usa-footer__secondary-section {
   color: #fff;
   background-color: #000;
+  overflow: visible;
 }
 
 .usa-footer__secondary-section a {
