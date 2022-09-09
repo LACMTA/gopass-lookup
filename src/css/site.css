@@ -127,8 +127,22 @@ svg.usa-search__submit-icon {
   object-position: center;
 }
 
+.image-overlay {
+  height: 0;
+  width: 0;
+}
+
 @media screen and (max-width: 640px) {
   .image-large {
     height: 300px;
+  }
+  .image-overlay {
+    position:absolute;
+    bottom:0;
+    height:40px;
+    width:100%;
+    border-top-right-radius:40px;
+    z-index:100;
+    background-color:#E5F1FE;
   }
 }

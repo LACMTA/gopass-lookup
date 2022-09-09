@@ -12,7 +12,7 @@ permalink: "schools/{{ school.index | slug }}/"
 
 {% if school.participating == true %} 
 
-<div class="usa-section">
+<div class="usa-section flex-1 display-flex flex-row flex-align-center">
 	<div class="grid-container">
 		<!--  margin-0 padding-0 -->
 		<div class="grid-row">
@@ -36,7 +36,7 @@ permalink: "schools/{{ school.index | slug }}/"
 
 {% else %}
 
-<div class="usa-section">
+<div class="usa-section flex-1">
 	<div class="grid-container">
 		<!--  margin-0 padding-0 -->
 		<div class="grid-row">
@@ -61,12 +61,16 @@ permalink: "schools/{{ school.index | slug }}/"
 
 <div class="section-highlight">
 	<div class="grid-row">
-		<div class="tablet:grid-col-4">
+		<div class="tablet:grid-col-4" style="position:relative;">
 			<img src="{{ "/img/CW_150807_8767_FPO.jpg" | url }}">
+			<div class="image-overlay">
+			</div>
 		</div>
-		<div class="tablet:grid-col-7 tablet:grid-offset-1">
-			<h2>Have more questions about GoPass?</h2>
-			<p><strong><a href="#">Find answers today.</a></strong></p>
+		<div class="tablet:grid-col-7 tablet:grid-offset-1 display-flex flex-row flex-align-center padding-x-4 padding-bottom-4">
+			<div>
+				<h2>Have more questions about GoPass?</h2>
+				<p><strong><a href="#">Find answers today.</a></strong></p>
+			</div>
 		</div>
 	</div>
 </div>
