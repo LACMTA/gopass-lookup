@@ -8,12 +8,14 @@ title: "Metro GoPass Lookup"
 {% include 'head' %}
 
 <body>
-	{% include 'header' %}
+	<div class="container-outer display-flex flex-column">
+		{% include 'header' %}
 
-	{{ content }}
-
-	{% include 'footer' %}
-
+		<div class="flex-1 display-flex flex-column">
+			{{ content }}
+		</div>
+		{% include 'footer' %}
+	</div>
 	<!-- <script src="https://lacmta.github.io/design-system/dist/js/uswds.min.js"></script> -->
 	<script src="{{ '/assets/uswds/js/uswds.min.js' | url }}"></script>
 	<script src="{{ '/js/site.js' | url }}"></script>

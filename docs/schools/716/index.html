@@ -20,7 +20,8 @@
 </head>
 
 <body>
-	<header class="usa-header usa-header--basic">
+	<div class="container-outer display-flex flex-column">
+		<header class="usa-header usa-header--basic">
 	<div class="nav-container">
 		<div class="navbar">
 			<div class="logo" id="-logo">
@@ -46,17 +47,19 @@
 		</nav>
 	</div>
 </header>
-  
-	
+
+		<div class="flex-1 display-flex flex-column">
+			
 
  
 
-<div class="usa-section">
+<div class="usa-section flex-1 display-flex flex-row flex-align-center">
 	<div class="grid-container">
 		<!--  margin-0 padding-0 -->
 		<div class="grid-row">
 			<div class="grid-col padding-x-4">
 				<section id="intro">
+					<span class="site-subheading">Students ride free with GoPass</span>
 					<h1>Yes!<br>James Madison Middle School has GoPass :)</h1>
 
 					<p><strong>To get your GoPass</strong>,<br>call <strong>James Madison Middle School</strong> at <strong>818-255-5200</strong>.</p>
@@ -75,29 +78,31 @@
 
 <div class="section-highlight">
 	<div class="grid-row">
-		<div class="tablet:grid-col-4">
+		<div class="tablet:grid-col-4" style="position:relative;">
 			<img src="/gopass-lookup/img/CW_150807_8767_FPO.jpg">
+			<div class="image-overlay">
+			</div>
 		</div>
-		<div class="tablet:grid-col-7 tablet:grid-offset-1">
-			<h2>Have more questions about GoPass?</h2>
-			<p><strong><a href="#">Find answers today.</a></strong></p>
+		<div class="tablet:grid-col-7 tablet:grid-offset-1 display-flex flex-row flex-align-center padding-x-4 padding-bottom-4">
+			<div>
+				<h2>Have more questions about GoPass?</h2>
+				<p><strong><a href="#">Find answers today.</a></strong></p>
+			</div>
 		</div>
 	</div>
 </div>
 
-
-	<footer class="usa-footer">
+		</div>
+		<footer class="usa-footer">
     <div class="usa-footer__secondary-section">
       <div class="grid-container">
         <div class="grid-row grid-gap">
-          <div class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2">
-            <div class="mobile-lg:grid-col-auto">
+          <div class="usa-footer__logo grid-row tablet:grid-col-5 tablet:grid-gap-2">
+            <div class="grid-col-4 tablet:grid-col-12">
               <img src="/gopass-lookup/img/metro_logo_white.svg" role="img"
-						alt="Metro logo" class="usa-footer__logo-img" />
+						alt="Metro logo" />
             </div>
-          </div>
-          <div class="usa-footer__contact-links mobile-lg:grid-col-6">
-            <div class="usa-footer__social-links grid-row grid-gap-1">
+            <div class="usa-footer__social-links grid-col-8 tablet:grid-col-12 grid-row grid-gap-1 display-flex flex-row flex-justify-end tablet:flex-justify-start">
               <div class="grid-col-auto">
                 <a class="usa-social-link" href="javascript:void(0);"
                   ><img
@@ -131,10 +136,12 @@
                 /></a>
               </div>
             </div>
-            <div>
-              Press Kit
-              FAQs
-              Contact Us
+          </div>
+          <div class="usa-footer__contact-links tablet:grid-col-7">
+            
+            <div class="margin-y-3 grid-row display-flex flex-row flex-justify-end grid-gap-2">
+              <a href="#" class="grid-col-auto">FAQs</a>
+              <a href="#" class="grid-col-auto">Contact Us</a>
             </div>
             <div>
               Designed by Metro - This website was designed and developed by a multicultural team working to make Metro's digital experience more equitable, accessible and easy to use.
@@ -144,6 +151,7 @@
       </div>
     </div>
   </footer>
+	</div>
 
 	<!-- <script src="https://lacmta.github.io/design-system/dist/js/uswds.min.js"></script> -->
 	<script src="/gopass-lookup/assets/uswds/js/uswds.min.js"></script>

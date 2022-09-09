@@ -8,11 +8,14 @@
 {% include 'head' %}
 
 <body>
-	{% include 'header' %}
-  
-	{{ content }}
+	<div class="container-outer display-flex flex-column">
+		{% include 'header' %}
 
-	{% include 'footer' %}
+		<div class="flex-1 display-flex flex-column">
+			{{ content }}
+		</div>
+		{% include 'footer' %}
+	</div>
 
 	<!-- <script src="https://lacmta.github.io/design-system/dist/js/uswds.min.js"></script> -->
 	<script src="{{ '/assets/uswds/js/uswds.min.js' | url }}"></script>

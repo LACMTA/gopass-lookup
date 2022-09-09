@@ -20,7 +20,8 @@
 </head>
 
 <body>
-	<header class="usa-header usa-header--basic">
+	<div class="container-outer display-flex flex-column">
+		<header class="usa-header usa-header--basic">
 	<div class="nav-container">
 		<div class="navbar">
 			<div class="logo" id="-logo">
@@ -46,55 +47,43 @@
 		</nav>
 	</div>
 </header>
-  
-	
+
+		<div class="flex-1 display-flex flex-column">
+			
 <div class="usa-section">
     <div class="grid-container">
         <!--  margin-0 padding-0 -->
         <div class="grid-row">
             <section id="intro">
-                <h1 id="results-header">Was your school missing from our list?</h1>
+                <span class="site-subheading">School not found</span>
+                <h1 id="results-header">Is your school missing from the list?</h1>
                 
-                <h2>Please, let us know.</h2>
+                <p>Please let us know.</p>
 
-                <form class="usa-form">
-                    <fieldset class="usa-fieldset">
-                      <label class="usa-label" for="school-name">School Name</label>
-                      <input
-                        class="usa-input"
-                        id="school-name"
-                        name="school-name"
-                        required
-                      />
-
-                      <label class="usa-label" for="school-address">School Address</label>
-                      <input
-                        class="usa-input"
-                        id="school-address"
-                        name="school-address"
-                        required
-                      />
-                    </fieldset>
-
-                    <button type="submit" class="usa-button">Submit</button>
-                </form>
+                <iframe
+                  src="https://tally.so/embed/nrjYNl?alignLeft=1&hideTitle=1&transparentBackground=1"
+                  width="100%"
+                  height="350"
+                  frameborder="0"
+                  marginheight="0"
+                  marginwidth="0"
+                  title="GoPass Missing Schools">
+                </iframe>
             </section>
         </div>
     </div>
 </div>
-
-	<footer class="usa-footer">
+		</div>
+		<footer class="usa-footer">
     <div class="usa-footer__secondary-section">
       <div class="grid-container">
         <div class="grid-row grid-gap">
-          <div class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2">
-            <div class="mobile-lg:grid-col-auto">
+          <div class="usa-footer__logo grid-row tablet:grid-col-5 tablet:grid-gap-2">
+            <div class="grid-col-4 tablet:grid-col-12">
               <img src="/gopass-lookup/img/metro_logo_white.svg" role="img"
-						alt="Metro logo" class="usa-footer__logo-img" />
+						alt="Metro logo" />
             </div>
-          </div>
-          <div class="usa-footer__contact-links mobile-lg:grid-col-6">
-            <div class="usa-footer__social-links grid-row grid-gap-1">
+            <div class="usa-footer__social-links grid-col-8 tablet:grid-col-12 grid-row grid-gap-1 display-flex flex-row flex-justify-end tablet:flex-justify-start">
               <div class="grid-col-auto">
                 <a class="usa-social-link" href="javascript:void(0);"
                   ><img
@@ -128,10 +117,12 @@
                 /></a>
               </div>
             </div>
-            <div>
-              Press Kit
-              FAQs
-              Contact Us
+          </div>
+          <div class="usa-footer__contact-links tablet:grid-col-7">
+            
+            <div class="margin-y-3 grid-row display-flex flex-row flex-justify-end grid-gap-2">
+              <a href="#" class="grid-col-auto">FAQs</a>
+              <a href="#" class="grid-col-auto">Contact Us</a>
             </div>
             <div>
               Designed by Metro - This website was designed and developed by a multicultural team working to make Metro's digital experience more equitable, accessible and easy to use.
@@ -141,6 +132,7 @@
       </div>
     </div>
   </footer>
+	</div>
 
 	<!-- <script src="https://lacmta.github.io/design-system/dist/js/uswds.min.js"></script> -->
 	<script src="/gopass-lookup/assets/uswds/js/uswds.min.js"></script>
