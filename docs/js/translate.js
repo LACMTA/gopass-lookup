@@ -179,7 +179,7 @@ window.addEventListener('load', function() {
     setInterval(function () {
         if (isGframeVisible(gframe) && !header.classList.contains('header--is-open-translate')) {
             header.classList.add('header--is-open-translate');
-            header.classList.remove("header--is-open-search");
+            // header.classList.remove("header--is-open-search");
             header.classList.remove("header--is-open-menu");
         } else if (!isGframeVisible(gframe) && header.classList.contains('header--is-open-translate')) {
             header.classList.remove('header--is-open-translate');
