@@ -67,6 +67,7 @@ function loadSuggestedSchools(school_list) {
 		} else {
 			search_results.forEach((element, index) => {
 				let list_item = document.createElement('li');
+				list_item.classList.add('notranslate');
 
 				if (index == 0) {
 					list_item.classList.add('active');
