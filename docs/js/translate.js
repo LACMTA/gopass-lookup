@@ -1,7 +1,3 @@
-function isMobile() {
-    return window.innerWidth < 1024;
-}
-
 function googleTranslateElementInit() {
     new google.translate.TranslateElement({
         pageLanguage: 'en',
@@ -66,19 +62,10 @@ function styleGT() {
         .goog-te-menu2-item:hover div{
             color: #ECECEC;
             background: #555;
-        }`;
-
-    if (isMobile()) {
-        style_code += `
+        }
         .goog-te-menu2 {
             width: 100% !important;
         }`;
-    } else {
-        style_code += `
-        .goog-te-menu2 {
-            width: 225px !important;
-        }`;
-    }
 
     style_node.innerHTML = style_code;
     gframe_head.appendChild(style_node);
@@ -116,7 +103,6 @@ function updateLanguageNames() {
                 langItems[i].querySelector('.text').innerText = 'Армянский (Armenian)';
                 break;
             case 'Select Language':
-                // $(langItems[i]).hide();
                 langItems[i].querySelector('.text').innerText = 'English';
                 break;
         }
@@ -138,25 +124,13 @@ function isGframeVisible(elem) {
     return !(elem.offsetWidth === 0 && elem.offsetHeight === 0);
 }
 
-function migrateTranslateOnResize() {
-    let translate_element = document.querySelector('#google_translate_element');
-
-    if (lastResizeWasMobile === isMobile()) {
-        return;
-    }
-    console.log('.header-bar--' + (isMobile() ? 'mobile' : 'desktop') + ' .header-bar__translate-clickable');
-
-    document.querySelector('.header-bar--' + (isMobile() ? 'mobile' : 'desktop') + ' .header-bar__translate-clickable').appendChild(translate_element);
-
-    lastResizeWasMobile = isMobile();
-}
-
 window.addEventListener('load', function() {
     gframe = document.querySelector('.goog-te-menu-frame');
     navTranslate = document.querySelector('.header-bar__translate');
     header = document.querySelector(".header");
 
-    navTranslate.onclick = (e) => {
+    navTranslate.addEventListener('click', function(e) {
+        console.log('navTranslate onclick even triggered');
         e.stopImmediatePropagation();
         e.stopPropagation();
 
@@ -168,10 +142,23 @@ window.addEventListener('load', function() {
             let navContainer = document.querySelector('.nav-container');
             let rect = navContainer.getBoundingClientRect();
             gframe.style.top = rect.bottom + 'px';
+
+            if (window.innerWidth > 640) {
+                gframe.style.left = (window.innerWidth - 275) + 'px';
+                gframe.style.width = '275px';
+            } else {
+                gframe.style.left = '0px';
+                gframe.style.width = window.innerWidth + 'px';
+            }
+
             isOpen = true;
         }
         resetInterval();
-    };
+    });
+
+    // navTranslate.onclick = (e) => {
+        
+    // };
 
     styleGT();
     resetInterval();
@@ -179,8 +166,6 @@ window.addEventListener('load', function() {
     setInterval(function () {
         if (isGframeVisible(gframe) && !header.classList.contains('header--is-open-translate')) {
             header.classList.add('header--is-open-translate');
-            // header.classList.remove("header--is-open-search");
-            header.classList.remove("header--is-open-menu");
         } else if (!isGframeVisible(gframe) && header.classList.contains('header--is-open-translate')) {
             header.classList.remove('header--is-open-translate');
         }
@@ -203,13 +188,14 @@ window.addEventListener('load', function() {
 
 });
 
-window.addEventListener('click', function() {
-    if (gframe) gframe.style.display = 'none';
+window.addEventListener('resize', function() {
+    if (isOpen) {
+        if (window.innerWidth > 640) {
+            gframe.style.left = (window.innerWidth - 275) + 'px';
+            gframe.style.width = '275px';
+        } else {
+            gframe.style.left = '0px';
+            gframe.style.width = window.innerWidth + 'px';
+        }
+    }
 });
-
-// window.onresize = () => {
-//     migrateTranslateOnResize();
-// };
-
-// migrateTranslateOnResize();
-

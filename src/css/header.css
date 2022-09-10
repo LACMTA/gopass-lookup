@@ -34,7 +34,7 @@
     color: #fff;
     background: #000;
     line-height: .9;
-    padding: 1rem;
+    padding: 1rem 0 1rem 1rem;
     font-weight: 700;
     font-size: .93rem;
 }
@@ -48,7 +48,7 @@
   .goog-te-menu-value {
     font-size: 0 !important;
   }
-  .header.header--is-open-menu .header-bar--mobile {
+  /* .header.header--is-open-menu .header-bar--mobile {
     padding-top: 50px;
   }
   .header.header--is-open-menu .header-bar--mobile .button.button--header-close {
@@ -64,11 +64,11 @@
   }
   .header.header--is-open-menu .header-bar--mobile .header-bar__menu-content {
     transform: translateX(100vw);
-  }
+  } */
   .header-bar__translate {
     position: relative;
   }
-  .header.header--is-open-menu .header__shroud,
+  /* .header.header--is-open-menu .header__shroud,
   .header.header--is-open-search .header__shroud,
   .header.header--is-open-translate .header__shroud {
     background-color: rgba(0, 0, 0, 0.25);
@@ -80,7 +80,7 @@
     top: 0;
     width: 100%;
     z-index: 1;
-  }
+  } */
   .header.header--is-open-translate .header-bar__translate {
     background: #000;
     display: block;
@@ -130,21 +130,21 @@
     height: 100%;
     letter-spacing: 0.05px;
     line-height: 22px;
-    padding: 10px;
+    padding: 10px 0px 10px 10px;
   }
   .header-bar__translate-presentation img {
     margin-right: 6px;
     width: 16px;
   }
 
-  @media (max-width: 1279px) {
+  @media (max-width: 640px) {
     .goog-te-menu-frame {
       width: 100% !important;
     }
   }
-  @media (min-width: 1280px) {
+  /* @media (min-width: 1280px) {
     .button.button--header-translate {
       width: auto;
-    }
+    } */
 
   }
