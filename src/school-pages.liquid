@@ -5,8 +5,8 @@ pagination:
   size: 1
   alias: school
 eleventyComputed:
-  title: "Metro GoPass Lookup - {{ school.school_name_with_some_districts_attached }}"
-permalink: "schools/{{ school.index | slug }}/"
+  title: "Metro GoPass Lookup - {{ school.school }}"
+permalink: "schools/{{ school.id | slug }}/"
 ---
 
 
@@ -19,10 +19,10 @@ permalink: "schools/{{ school.index | slug }}/"
 			<div class="grid-col padding-x-4">
 				<section id="intro">
 					<span class="site-subheading">Students ride free with GoPass</span>
-					<h1>Yes!<br>{{ school.school_name_with_some_districts_attached }} has GoPass :)</h1>
+					<h1>Yes!<br>{{ school.school }} has GoPass :)</h1>
 
 					<p><strong>To get your GoPass</strong>,<br>call <strong>{{
-							school.school_name_with_some_districts_attached }}</strong> at <strong>{{ school.phone
+							school.school }}</strong> at <strong>{{ school.phone
 							}}</strong>.</p>
 
 					<p>Once you have your GoPass, you must activate your card to start riding for free. Instructions
@@ -44,7 +44,7 @@ permalink: "schools/{{ school.index | slug }}/"
 			<div class="grid-col padding-x-4 padding-bottom-4">
 				<section id="intro">
 					<span class="site-subheading">Students ride free with GoPass</span>
-					<h1>No, {{ school.school_name_with_some_districts_attached }} does not have GoPass, yet :(</h1>
+					<h1>No, {{ school.school }} does not have GoPass, yet :(</h1>
 
 					<h2>What can you do?</h2>
 

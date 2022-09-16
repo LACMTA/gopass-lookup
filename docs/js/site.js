@@ -45,7 +45,7 @@ function loadSuggestedSchools(school_list) {
 
 	if (input != '') {
 		let search_results = fuzzysort.go(input, school_list, {
-			key: ['school_name_with_some_districts_attached'],
+			key: ['school'],
 			limit: 5,
 			threshold: -10000
 		});
@@ -73,7 +73,7 @@ function loadSuggestedSchools(school_list) {
 				}
 
 				list_item.innerHTML = fuzzysort.highlight(fuzzysort.single(input, element.target), '<strong>', '</strong>');
-				list_item.setAttribute('data-id', element.obj.index);
+				list_item.setAttribute('data-id', element.obj.id);
 				list_item.setAttribute('data-gopass', element.obj.participating);
 				list_item.addEventListener('click', clickSuggestionList);
 
