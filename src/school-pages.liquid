@@ -1,7 +1,7 @@
 ---
 layout: results
 pagination:
-  data: schools
+  data: gopass-schools
   size: 1
   alias: school
 eleventyComputed:
@@ -9,70 +9,94 @@ eleventyComputed:
 permalink: "schools/{{ school.id | slug }}/"
 ---
 
+{% if school.participating == true %}
 
-{% if school.participating == true %} 
+  <div class="usa-section flex-1 display-flex flex-row flex-align-center">
+    <div class="grid-container">
+      <!--  margin-0 padding-0 -->
+      <div class="grid-row">
+        <div class="grid-col padding-x-4">
+          <section id="intro">
+            <span class="site-subheading">Students ride free with GoPass</span>
+            <h1>Yes!&nbsp;<span class="notranslate">{{ school.school }}
+              </span>&nbsp;has GoPass :)</h1>
 
-<div class="usa-section flex-1 display-flex flex-row flex-align-center">
-	<div class="grid-container">
-		<!--  margin-0 padding-0 -->
-		<div class="grid-row">
-			<div class="grid-col padding-x-4">
-				<section id="intro">
-					<span class="site-subheading">Students ride free with GoPass</span>
-					<h1>Yes!&nbsp;<span class="notranslate">{{ school.school }}</span>&nbsp;has GoPass :)</h1>
+            <p>
+              <strong>To get your GoPass</strong>, call&nbsp;<strong>
+                <span class="notranslate">
+                  {{ school.school }}
+                </span>
+              </strong>&nbsp;at
+              <strong>{{ school.phone }}
+              </strong>.</p>
 
-					<p><strong>To get your GoPass</strong>, call&nbsp;<strong><span class="notranslate">
-					{{ school.school }}</span></strong>&nbsp;at <strong>{{ school.phone
-							}}</strong>.</p>
+            <p>Once you have your GoPass, you must activate your card to start riding for free. Instructions will be included with your card.</p>
 
-					<p>Once you have your GoPass, you must activate your card to start riding for free. Instructions
-						will be included with your card.</p>
-
-					<p><strong><a href="/">Look up another school.</a></strong></p>
-				</section>
-			</div>
-		</div>
-	</div>
-</div>
+            <p>
+              <strong>
+                <a href="/">Look up another school.</a>
+              </strong>
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% else %}
 
-<div class="usa-section flex-1">
-	<div class="grid-container">
-		<!--  margin-0 padding-0 -->
-		<div class="grid-row">
-			<div class="grid-col padding-x-4 padding-bottom-4">
-				<section id="intro">
-					<span class="site-subheading">Students ride free with GoPass</span>
-					<h1>No,&nbsp;<span class="notranslate">{{ school.school }}</span>&nbsp;does not have GoPass, yet :(</h1>
+  <div class="usa-section flex-1">
+    <div class="grid-container">
+      <!--  margin-0 padding-0 -->
+      <div class="grid-row">
+        <div class="grid-col padding-x-4 padding-bottom-4">
+          <section id="intro">
+            <span class="site-subheading">Students ride free with GoPass</span>
+            <h1>No,&nbsp;<span class="notranslate">{{ school.school }}
+              </span>&nbsp;does not have GoPass, yet :(</h1>
 
-					<h2>What can you do?</h2>
+            <h2>What can you do?</h2>
 
-					<ol>
-						<li><strong><a href="#">Let your school know you want GoPass.</a></strong></li>
-						<li><strong><a href="#">Check out other Metro Discounted Passes.</a></strong></li>
-						<li><strong><a href="/">Look up another school.</a></strong></li>
-					</ol>
-				</section>
-			</div>
-		</div>
-	</div>
-</div>
+            <ol>
+              <li>
+                <strong>
+                  <a href="#">Let your school know you want GoPass.</a>
+                </strong>
+              </li>
+              <li>
+                <strong>
+                  <a href="#">Check out other Metro Discounted Passes.</a>
+                </strong>
+              </li>
+              <li>
+                <strong>
+                  <a href="/">Look up another school.</a>
+                </strong>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endif %}
 
 <div class="section-highlight">
-	<div class="grid-row">
-		<div class="tablet:grid-col-4" style="position:relative;">
-			<img src="{{ "/img/CW_150807_8767_FPO.jpg" | url }}">
-			<div class="image-overlay">
-			</div>
-		</div>
-		<div class="tablet:grid-col-7 tablet:grid-offset-1 display-flex flex-row flex-align-center padding-x-4 padding-bottom-4">
-			<div>
-				<h2>Have more questions about GoPass?</h2>
-				<p><strong><a href="#">Find answers today.</a></strong></p>
-			</div>
-		</div>
-	</div>
+  <div class="grid-row">
+    <div class="tablet:grid-col-4" style="position:relative;">
+      <img src="{{ "/img/CW_150807_8767_FPO.jpg" | url }}">
+      <div class="image-overlay"></div>
+    </div>
+    <div class="tablet:grid-col-7 tablet:grid-offset-1 display-flex flex-row flex-align-center padding-x-4 padding-bottom-4">
+      <div>
+        <h2>Have more questions about GoPass?</h2>
+        <p>
+          <strong>
+            <a href="#">Find answers today.</a>
+          </strong>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

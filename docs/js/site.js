@@ -1,4 +1,4 @@
-const SCHOOLS_JSON = "data/schools.json";
+const SCHOOLS_JSON = "data/gopass-schools.json";
 
 let SCHOOLS_DATA = [];
 
