@@ -121,7 +121,11 @@ function resetInterval() {
 }
 
 function isGframeVisible(elem) {
-    return !(elem.offsetWidth === 0 && elem.offsetHeight === 0);
+    if (elem == null) {
+        return false;
+    } else {
+        return !(elem.offsetWidth === 0 && elem.offsetHeight === 0);
+    }    
 }
 
 window.addEventListener('load', function() {
