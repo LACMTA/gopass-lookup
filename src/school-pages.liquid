@@ -1,7 +1,7 @@
 ---
 layout: results
 pagination:
-  data: gopass-schools
+  data: schools
   size: 1
   alias: school
 eleventyComputed:
@@ -18,17 +18,19 @@ permalink: "schools/{{ school.id | slug }}/"
         <div class="grid-col padding-x-4">
           <section id="intro">
             <span class="site-subheading">Students ride free with GoPass</span>
-            <h1>Yes!&nbsp;<span class="notranslate">{{ school.school }}
-              </span>&nbsp;has GoPass :)</h1>
-
+            <h1>Yes!
+              <span class="notranslate">{{ school.school | strip }}</span>
+              has GoPass :)
+            </h1>
+            
+            {% assign phone_list = schoolPhones | where: 'school', school.school %}
+            
+            
             <p>
-              <strong>To get your GoPass</strong>, call&nbsp;<strong>
-                <span class="notranslate">
-                  {{ school.school }}
-                </span>
-              </strong>&nbsp;at
-              <strong>{{ school.phone }}
-              </strong>.</p>
+              <strong>To get your GoPass</strong>, call
+              <strong><span class="notranslate" id="schoolName">{{ school.school | strip }}</span></strong>
+              {% if phone_list[0].phone_list %}
+                at <strong id="schoolPhone">{{ phone_list[0].phone_list | separateByPipe }}</strong>{% endif %}.</p>
 
             <p>Once you have your GoPass, you must activate your card to start riding for free. Instructions will be included with your card.</p>
 

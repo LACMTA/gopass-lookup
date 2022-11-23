@@ -1,4 +1,4 @@
-const SCHOOLS_JSON = "data/gopass-schools.json";
+const SCHOOLS_JSON = "_data/schools.json";
 
 let SCHOOLS_DATA = [];
 
@@ -43,8 +43,17 @@ function loadDataFromJSON(file) {
 function loadSuggestedSchools(school_list) {
 	input = document.getElementById('search-field').value;
 
+	let school_list_distinct = school_list.reduce((new_arr, curr_elem) => {
+		if (!new_arr.some((elem) => {
+			return elem.school == curr_elem.school;
+		})) {
+			new_arr.push(curr_elem);
+		}
+		return new_arr;
+	}, []);
+
 	if (input != '') {
-		let search_results = fuzzysort.go(input, school_list, {
+		let search_results = fuzzysort.go(input, school_list_distinct, {
 			key: ['school'],
 			limit: 5,
 			threshold: -10000
@@ -211,6 +220,10 @@ function clickOutsideSearchInput(e) {
 
 	if (!search_suggestions.contains(e.target) && !search_field.contains(e.target) && isGframeVisible(search_suggestions)) {
 		search_suggestions.style.display = 'none';
+		let list_elem = search_suggestions.querySelector('ul');
+		while (list_elem.firstChild) {
+			list_elem.removeChild(list_elem.firstChild);
+		}
 	}
 }
 
