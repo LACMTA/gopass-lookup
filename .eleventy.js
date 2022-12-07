@@ -5,7 +5,7 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/js");
 	eleventyConfig.addPassthroughCopy("src/img");
 	eleventyConfig.addPassthroughCopy("assets/uswds");
-	eleventyConfig.addPassthroughCopy("src/_data");
+	eleventyConfig.addPassthroughCopy("src/data");
 	eleventyConfig.addPassthroughCopy("src/favicon.ico");
 
 	// check for empty values befor using this filter
@@ -33,7 +33,7 @@ module.exports = function(eleventyConfig) {
 		dir: {
 			input: "src",
 			output: "docs",
-			data: "_data"
+			data: "data"
 		}
 	};
 };

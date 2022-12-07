@@ -4,8 +4,8 @@
   "description": "Lookup tool for schools participating in LA Metro's GoPass program.",
   "main": "index.js",
   "scripts": {
-    "get-school-data": "curl https://api.metro.net/get_gopass_schools -H 'Accept: application/json' -o src/_data/schools.json",
-    "get-phone-data": "curl 'https://api.metro.net/get_gopass_schools?show_missing=false&combine_phone=true&groupby_column=school' -H 'Accept: application/json' -o src/_data/schoolPhones.json",
+    "get-school-data": "curl https://api.metro.net/get_gopass_schools -H 'Accept: application/json' -o src/data/schools.json",
+    "get-phone-data": "curl 'https://api.metro.net/get_gopass_schools?show_missing=false&combine_phone=true&groupby_column=school' -H 'Accept: application/json' -o src/data/schoolPhones.json",
     "get-data": "npm run get-school-data && npm run get-phone-data",
     "build:uswds": "npx gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1",
