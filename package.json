@@ -12,6 +12,7 @@
     "clean": "npx rimraf docs",
     "build": "npx @11ty/eleventy --quiet",
     "clean:build": "npm run clean && npm run get-data && npm run build",
+    "prod:build": "NODE_ENV=prod npm run clean:build",
     "serve": "npx @11ty/eleventy --serve --quiet",
     "debug": "DEBUG=* npx @11ty/eleventy --serve",
     "start": "npm run clean:build && npm run serve"
