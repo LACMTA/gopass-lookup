@@ -1,0 +1,45 @@
+# This workflow is based on the Node.js CI Workflow
+# It will:
+# - Checkout the repository and install Node and the project dependencies.
+# - Run the production build command to generate the 11ty static pages.
+# - Copy the CNAME file to the docs/ folder if necessary
+# - Commit and push these changes back to the repository.
+
+name: Build 11ty-web-template for Production
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    # if: github.repository != 'LACMTA/11ty-web-template'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+      with: 
+        ref: ${{ github.head_ref }}
+    - name: Use Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+    - name: Install dependencies
+      run: npm install
+    - name: Build Site
+      run: npm run prod:build
+    - name: Check file existence
+      id: check_files
+      uses: andstor/file-existence-action@v1
+      with:
+        files: "CNAME"
+    - name: If CNAME exists then copy CNAME to docs/
+      if: steps.check_files.outputs.files_exists == 'true'
+      run: cp CNAME docs/
+    - name: Commit and push changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: '[Auto] clean and build site for prod'
