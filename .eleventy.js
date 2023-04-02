@@ -12,7 +12,6 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addLiquidFilter('separateByPipe', function(value) {
 		let value_arr = value.split('|');
 		value_arr = value_arr.filter(element => element.trim() != "NA" && element.trim() != "No Data");
-		console.log(value_arr);
 		let result = '';
 
 		if (value_arr.length > 1) {
