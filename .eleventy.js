@@ -8,9 +8,11 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/data");
 	eleventyConfig.addPassthroughCopy("src/favicon.ico");
 
-	// check for empty values befor using this filter
+	// check for empty values before using this filter
 	eleventyConfig.addLiquidFilter('separateByPipe', function(value) {
 		let value_arr = value.split('|');
+		value_arr = value_arr.filter(element => element.trim() != "NA" && element.trim() != "No Data");
+		console.log(value_arr);
 		let result = '';
 
 		if (value_arr.length > 1) {
@@ -22,7 +24,7 @@ module.exports = function(eleventyConfig) {
 				}
 			});
 		} else {
-			result = value_arr[0];
+			result = value_arr[0].trim();
 		}
 
 		return result;
