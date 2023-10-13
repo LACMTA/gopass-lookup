@@ -50,6 +50,7 @@ html, body {
 .container-outer {
   height: 100%;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 .usa-footer, .usa-footer__secondary-section {
