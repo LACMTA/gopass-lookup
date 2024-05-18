@@ -9,7 +9,7 @@ eleventyComputed:
 permalink: "schools/{{ school.id | slug }}/"
 ---
 
-{% if school.participating == true %}
+{% if school.participating == "true" %}
 
   <div class="usa-section flex-1 display-flex flex-row flex-align-center">
     <div class="grid-container">
@@ -18,11 +18,8 @@ permalink: "schools/{{ school.id | slug }}/"
         <div class="grid-col padding-x-4">
           <section id="intro">
             <span class="site-subheading">Students ride free with GoPass</span>
-            <h1>Yes!
-              <span class="notranslate">{{ school.school | strip }}</span>
-              has GoPass :)
-            </h1>
-
+            <h1>Yes! <span class="notranslate">{{ school.school | strip }}</span> has GoPass :)</h1>
+            
             {% assign phone_list = schoolPhones | where: 'school', school.school %}
 
 
@@ -57,8 +54,7 @@ permalink: "schools/{{ school.id | slug }}/"
         <div class="grid-col padding-x-4 padding-bottom-4">
           <section id="intro">
             <span class="site-subheading">Students ride free with GoPass</span>
-            <h1>No,&nbsp;<span class="notranslate">{{ school.school }}
-              </span>&nbsp;does not have GoPass, yet :(</h1>
+            <h1>No, <span class="notranslate">{{ school.school }}</span> does not have GoPass, yet :(</h1>
 
             <h2>What can you do?</h2>
 
