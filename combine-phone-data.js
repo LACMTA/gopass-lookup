@@ -16,14 +16,22 @@ const schoolsData = JSON.parse(fs.readFileSync(DATA_FOLDER_PATH + SCHOOLS_FILE, 
 // Merge the data based on the school field
 const mergedData = schoolsData.map(school => {
     let phoneRecord = phoneData.find(phone => phone.school === school.school);
+    let phoneList = [];
 
-    if (phoneRecord == 'NA') {
-        phoneRecord = null;
+    if (phoneRecord) {
+        if (phoneRecord.phone_list == 'NA') {
+            phoneList = [];
+        } else {
+            phoneList = phoneRecord.phone_list.split('|');
+            phoneList = phoneList.map(phone => phone.trim());
+            phoneList = phoneList.filter(phone => phone != 'NA');
+        }
     }
+
 
     return {
         ...school,
-        phone: phoneRecord ? phoneRecord.phone_list : null
+        phone: phoneRecord ? phoneList : []
     };
 });
 
