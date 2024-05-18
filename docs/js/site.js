@@ -1,4 +1,7 @@
 const SCHOOLS_JSON = "data/schools.json";
+const FIELD_NAME_SCHOOL = 'school';
+
+const PATH_PREFIX = '/gopass-lookup/';
 
 let SCHOOLS_DATA = [];
 
@@ -45,7 +48,7 @@ function loadSuggestedSchools(school_list) {
 
 	let school_list_distinct = school_list.reduce((new_arr, curr_elem) => {
 		if (!new_arr.some((elem) => {
-			return elem.school == curr_elem.school;
+			return elem[FIELD_NAME_SCHOOL] == curr_elem[FIELD_NAME_SCHOOL];
 		})) {
 			new_arr.push(curr_elem);
 		}
@@ -54,8 +57,8 @@ function loadSuggestedSchools(school_list) {
 
 	if (input != '') {
 		let search_results = fuzzysort.go(input, school_list_distinct, {
-			key: ['school'],
-			limit: 5,
+			key: [FIELD_NAME_SCHOOL],
+			limit: 10,
 			threshold: -10000
 		});
 		let search_suggestions = document.getElementById('search-suggestions');
@@ -135,15 +138,18 @@ function navigateSuggestionList(event) {
 						search_field.value = active_suggestion.previousElementSibling.innerText;
 						search_button.setAttribute('data-id', active_suggestion.previousElementSibling.getAttribute('data-id'));
 						active_suggestion.previousElementSibling.classList.toggle('active');
+						active_suggestion.previousElementSibling.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'end'});
 					} else {
 						search_field.value = suggestion_list_items[suggestion_list_items.length - 1].innerText;
 						search_button.setAttribute('data-id', suggestion_list_items[suggestion_list_items.length - 1].getAttribute('data-id'));
 						suggestion_list_items[suggestion_list_items.length - 1].classList.toggle('active');
+						suggestion_list_items[suggestion_list_items.length - 1].scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'end'});
 					}
 				} else {
 					search_field.value = suggestion_list_items[suggestion_list_items.length - 1].innerText;
 					search_button.setAttribute('data-id', suggestion_list_items[suggestion_list_items.length - 1].getAttribute('data-id'));
 					suggestion_list_items[suggestion_list_items.length - 1].classList.toggle('active');
+					suggestion_list_items[suggestion_list_items.length - 1].scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'end'});
 				}
 				break;
 			case 40: // down
@@ -154,22 +160,25 @@ function navigateSuggestionList(event) {
 						search_field.value = active_suggestion.nextElementSibling.innerText;
 						search_button.setAttribute('data-id', active_suggestion.nextElementSibling.getAttribute('data-id'));
 						active_suggestion.nextElementSibling.classList.toggle('active');
+						active_suggestion.nextElementSibling.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
 					} else {
 						search_field.value = suggestion_list_items[0].innerText;
 						search_button.setAttribute('data-id', suggestion_list_items[0].getAttribute('data-id'));
 						suggestion_list_items[0].classList.toggle('active');
+						suggestion_list_items[0].scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
 					}
 				} else {
 					search_field.value = suggestion_list_items[0].innerText;
 					search_button.setAttribute('data-id', suggestion_list_items[0].getAttribute('data-id'));
 					suggestion_list_items[0].classList.toggle('active');
+					suggestion_list_items[0].scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
 				}
 				break;
-			case 13:
+			case 13: // enter
 				if (active_suggestion != null) {
-					// let search_button = document.getElementById('search-button');
+					let search_button = document.getElementById('search-button');
 
-					// search_button.setAttribute('data-id', active_suggestion.getAttribute('data-id'));
+					search_button.setAttribute('data-id', active_suggestion.getAttribute('data-id'));
 					search_button.click();
 				}
 				break;
@@ -177,7 +186,11 @@ function navigateSuggestionList(event) {
 	}
 }
 
-function clickSearchButton() {
+function clickSearchButton(ev) {
+	// Stop event propagation so the form doesn't submit
+	ev.preventDefault();
+	ev.stopPropagation();
+
 	let search_suggestions = document.getElementById('search-suggestions');
 	search_suggestions.style.display = 'none';
 
@@ -187,7 +200,13 @@ function clickSearchButton() {
 
 	if (id != null) {
 		loadSchoolPage(id);
+	} else {
+		let active_suggestion = document.querySelector('#search-suggestions-list > li.active');
+		if (active_suggestion != null) {
+			loadSchoolPage(active_suggestion.getAttribute('data-id'));
+		}
 	}
+	return false;
 }
 
 function loadSchoolPage(id) {
@@ -197,12 +216,15 @@ function loadSchoolPage(id) {
 	if (id == '-1' && input.value != '') {
 		form.setAttribute('action', 'not-found');
 		window.location.href = "not-found";
+		return false;
 	} else {
-		form.setAttribute('action', 'schools/' + id);
-		window.location.href = "schools/" + id;
+		let redirectPath = `schools/${id}/`;
+
+		form.setAttribute('action', redirectPath);
+		window.location.href =  redirectPath;
+		return false;
 	}
 }
-
 
 window.addEventListener('resize', function () {
 	adjustSuggestionListWidth();
