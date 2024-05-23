@@ -9,7 +9,7 @@ eleventyComputed:
 permalink: "schools/{{ school.id | slug }}/"
 ---
 
-{% if school.participating == "true" %}
+{% if school.participating == "true" or school.participating == true %}
 
   <div class="usa-section flex-1 display-flex flex-row flex-align-center">
     <div class="grid-container">
