@@ -7,7 +7,7 @@
     "get:school-data": "curl https://api.metro.net/get_gopass_schools -H 'Accept: application/json' -o src/data/schools.json",
     "get:phone-data": "curl 'https://api.metro.net/get_gopass_schools?show_missing=false&combine_phone=true&groupby_column=school' -H 'Accept: application/json' -o src/data/schoolPhones.json",
     "get:school-data-tap": "curl https://www.taptogo.net/services/apexrest/schools/v1 -H 'Accept: application/json' -o src/data/schools-api.json",
-    "get:data-tap": "npm run get:school-data-tap && npm run clean:school-data-tap && npm run combine:data",
+    "get:data-tap": "npm run get:school-data-tap && npm run get:phone-data && npm run clean:school-data-tap && npm run combine:data",
     "get:data": "npm run get:school-data && npm run get:phone-data",
     "clean:school-data-tap": "node clean-school-data-tap.js",
     "combine:data": "node combine-phone-data.js",
