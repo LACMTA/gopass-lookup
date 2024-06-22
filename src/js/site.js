@@ -65,7 +65,6 @@ function loadSuggestedSchools(school_list) {
 		let search_suggestions = document.getElementById('search-suggestions');
 		let search_suggestions_list = document.getElementById('search-suggestions-list');
 		search_suggestions_list.innerHTML = '';
-		console.log(search_results);
 
 		if (search_results.length == 0 && input.length != 0) {
 			let no_results = document.createElement('li');
@@ -128,7 +127,6 @@ function showSuggestionList() {
 }
 
 function navigateSuggestionList(event) {
-	console.log(event.target);
 	let search_field = document.getElementById('search-field');
 	let search_button = document.getElementById('search-button');
 	let search_suggestions = document.getElementById('search-suggestions');
