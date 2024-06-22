@@ -22,6 +22,28 @@ function cleanSchoolsData() {
             school['school'] = school['school'].trim();
         });
 
+        //add aliases: Los Angeles <-> LA, bidirectionally
+        let alias_map = new Map([
+            ['LA', 'Los Angeles']
+        ]);
+
+        result.forEach((school) => {
+            //NOTE: An assumption is being made here that each school will have at most one alias to prevent ballooning results!
+            alias_map.forEach((value, key) => {
+                let keyRegex = new RegExp("(^|\\s)" + key + "(\\s|$)", "g");
+                let replacedKey = school['school'].replace(keyRegex, "$1" + value + "$2");
+                if (replacedKey !== school['school']) {
+                    school['alias'] = replacedKey;
+                } else {
+                    let valueRegex = new RegExp("(^|\\s)" + value + "(\\s|$)", "g");
+                    let replacedValue = school['school'].replace(valueRegex, "$1" + key + "$2");
+                    if (replacedValue !== school['school']) {
+                        school['alias'] = replacedValue;
+                    }
+                }
+            });
+        });
+
         saveJsonFile(DATA_FOLDER_PATH + DESTINATION_FILE_NAME, result, (err) => {
             if (err) {
                 console.error('Error saving JSON file:', err);

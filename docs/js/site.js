@@ -1,5 +1,6 @@
 const SCHOOLS_JSON = "data/schools.json";
 const FIELD_NAME_SCHOOL = 'school';
+const FIELD_NAME_ALIAS = 'alias';
 
 const PATH_PREFIX = '/gopass-lookup/';
 
@@ -57,13 +58,14 @@ function loadSuggestedSchools(school_list) {
 
 	if (input != '') {
 		let search_results = fuzzysort.go(input, school_list_distinct, {
-			key: [FIELD_NAME_SCHOOL],
+			keys: [FIELD_NAME_SCHOOL, FIELD_NAME_ALIAS],
 			limit: 10,
 			threshold: -10000
 		});
 		let search_suggestions = document.getElementById('search-suggestions');
 		let search_suggestions_list = document.getElementById('search-suggestions-list');
 		search_suggestions_list.innerHTML = '';
+		console.log(search_results);
 
 		if (search_results.length == 0 && input.length != 0) {
 			let no_results = document.createElement('li');
@@ -84,8 +86,12 @@ function loadSuggestedSchools(school_list) {
 				if (index == 0) {
 					list_item.classList.add('active');
 				}
-
-				list_item.innerHTML = fuzzysort.highlight(fuzzysort.single(input, element.target), '<strong>', '</strong>');
+				if(element[0] != null){
+					list_item.innerHTML = fuzzysort.highlight(fuzzysort.single(input, element.obj.school, '<strong>', '</strong>'));
+				}else{
+					//if the alias is what's matching, show the actual school name without match highlighting (since we didn't match on school name)
+					list_item.innerHTML = element.obj.school;
+				}
 				list_item.setAttribute('data-id', element.obj.id);
 				list_item.setAttribute('data-gopass', element.obj.participating);
 				list_item.addEventListener('click', clickSuggestionList);
