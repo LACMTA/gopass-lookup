@@ -16,10 +16,13 @@
     "clean": "npx rimraf docs",
     "build": "npx @11ty/eleventy --quiet",
     "clean:build": "npm run clean && npm run get:data-tap && npm run build",
-    "prod:build": "npm run clean && npm run get:data-tap && NODE_ENV=prod npx @11ty/eleventy",
     "serve": "npx @11ty/eleventy --serve --quiet",
     "debug": "DEBUG=* npm run clean:build && npx @11ty/eleventy --serve",
-    "start": "npm run clean:build && npm run serve"
+    "start": "npm run clean:build && npm run serve",
+    "clean:serve": "npm run clean:build && npm run serve",
+    "local:serve": "NODE_ENV=localhost npm run clean:serve",
+    "dev:build": "NODE_ENV=dev npm run clean:build",
+    "prod:build": "NODE_ENV=prod npm run clean:build"
   },
   "repository": {
     "type": "git",

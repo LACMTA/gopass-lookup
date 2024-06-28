@@ -1,4 +1,26 @@
-const isProduction = process.env.NODE_ENV === "prod";
+console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+
+let baseUrl = '';
+let pathPrefix = '';
+
+switch (process.env.NODE_ENV) {
+	case "localhost":
+		baseUrl = `http://localhost:8080/`;
+		console.log("Using local environment settings");
+		break;
+	case "prod":
+		baseUrl = `https://mybus.metro.net/`;
+		pathPrefix = '';
+		console.log("Using production environment settings");
+		break;
+	case "dev":
+		baseUrl = `https://lacmta.github.io/`;
+		pathPrefix = 'mybus-v3-dev';
+		console.log("Using development environment settings");
+		break;
+	default:
+		console.log("Using unknown settings");
+}
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/css");
@@ -30,7 +52,7 @@ module.exports = function(eleventyConfig) {
 	});
 
 	return {
-		pathPrefix: "/gopass-lookup/",
+		pathPrefix: pathPrefix,
 		dir: {
 			input: "src",
 			output: "docs",
