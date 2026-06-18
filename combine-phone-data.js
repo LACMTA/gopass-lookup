@@ -15,7 +15,8 @@ const schoolsData = JSON.parse(fs.readFileSync(DATA_FOLDER_PATH + SCHOOLS_FILE, 
 
 // Merge the data based on the school field
 const mergedData = schoolsData.map(school => {
-    let phoneRecord = phoneData.find(phone => phone.school === school.school);
+    let phoneRecord = phoneData.find(phone =>
+        phone.school === school.school);
     let phoneList = [];
 
     if (phoneRecord) {
