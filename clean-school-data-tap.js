@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-console.log('Running clean-schools-data.js');
+console.log('Running clean-schools-data-tap.js');
 
 const DATA_FOLDER_PATH = 'src/data/';
 const SOURCE_FILE_NAME = 'schools-api.json';
@@ -45,7 +45,8 @@ function readJsonFile(filePath, callback) {
             const jsonData = JSON.parse(data);
             callback(null, jsonData);
         } catch (parseError) {
-            console.error('Error parsing JSON:', parseError);
+            console.error('Error parsing JSON:\n', parseError);
+            console.error('File contents:\n', data)
             callback(parseError, null);
         }
     });
